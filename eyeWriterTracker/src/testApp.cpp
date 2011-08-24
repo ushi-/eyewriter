@@ -19,6 +19,7 @@ void testApp::setup(){
 	TM.setup();
 	CM.setup();
 	typeScene.setup();
+	answerScene.setup();
 	eyeSmoothed.set(0,0,0);
 	
 	eyeApp.setup();
@@ -114,6 +115,11 @@ void testApp::update(){
 		ponger.update(pt.x, pt.y);
 	}
 	
+	if (mode == MODE_ANSWER) {
+		ofPoint pt = eyeSmoothed;
+		answerScene.update(pt.x, pt.y);
+	}
+	
 }
 
 //--------------------------------------------------------------
@@ -128,6 +134,7 @@ void testApp::draw(){
 	if (mode == MODE_DRAW )				eyeApp.draw();
 	if (mode == MODE_TYPING)			typeScene.draw();
 	if (mode == MODE_PONG)				ponger.draw();
+	if (mode == MODE_ANSWER)			answerScene.draw();
 		
 	// draw a green dot to see how good the tracking is:
 	if (CM.fitter.bBeenFit || bMouseSimulation){
@@ -164,7 +171,7 @@ void testApp::keyPressed(int key){
 			
 		case	OF_KEY_RETURN:
 			mode ++;
-			mode %= 6; // number of modes;
+			mode %= 7; // number of modes;
 			break;
 			
 		case	'm':

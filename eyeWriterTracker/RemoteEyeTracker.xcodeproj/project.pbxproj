@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */; };
 		CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1B1B031228715100AAEF89 /* pongScene.cpp */; };
 		CF5E82AE12283C29004404A1 /* speak.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AB12283C29004404A1 /* speak.m */; };
 		CF5E82AF12283C29004404A1 /* typingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AC12283C29004404A1 /* typingScene.cpp */; };
@@ -173,6 +174,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = answeringScene.cpp; sourceTree = "<group>"; };
+		4EA72F0E1404F2A900B4AF68 /* answeringScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answeringScene.h; sourceTree = "<group>"; };
 		CF1B1B031228715100AAEF89 /* pongScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pongScene.cpp; sourceTree = "<group>"; };
 		CF1B1B041228715100AAEF89 /* pongScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pongScene.h; sourceTree = "<group>"; };
 		CF5E82AA12283C29004404A1 /* speak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speak.h; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 				CF5E82AB12283C29004404A1 /* speak.m */,
 				CF5E82AC12283C29004404A1 /* typingScene.cpp */,
 				CF5E82AD12283C29004404A1 /* typingScene.h */,
+				4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */,
+				4EA72F0E1404F2A900B4AF68 /* answeringScene.h */,
 			);
 			path = otherScenes;
 			sourceTree = "<group>";
@@ -1618,6 +1623,7 @@
 				CF5E82AE12283C29004404A1 /* speak.m in Sources */,
 				CF5E82AF12283C29004404A1 /* typingScene.cpp in Sources */,
 				CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */,
+				4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

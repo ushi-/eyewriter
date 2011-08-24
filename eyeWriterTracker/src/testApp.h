@@ -8,13 +8,13 @@
 #include "calibrationManager.h"
 #include "buttonTrigger.h"
 #include "typingScene.h"
-
 #include "pongScene.h"
+#include "answeringScene.h"
 
 
 enum{
 	
-	MODE_TRACKING,	MODE_CALIBRATING,	MODE_TEST, MODE_DRAW,  MODE_TYPING, MODE_PONG
+	MODE_TRACKING,	MODE_CALIBRATING,	MODE_TEST, MODE_DRAW,  MODE_TYPING, MODE_PONG, MODE_ANSWER
 
 };
 
@@ -46,6 +46,7 @@ class testApp : public ofBaseApp {
 		eyePlotterTestApp	eyeApp;
 		typingScene				typeScene;
 		pongScene				ponger;
+		answeringScene		answerScene;
 
 	
 	
