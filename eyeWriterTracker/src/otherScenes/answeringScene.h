@@ -15,6 +15,7 @@
 #include "buttonRect.h"
 #include "buttonToggle.h"
 #include "buttonTrigger.h"
+#include "buttonTransformable.h"
 
 #include "ofxXmlSettings.h"
 #include "baseScene.h"
@@ -31,6 +32,9 @@ public:
 	void setup();
 	void update(float mouseX, float mouseY);
 	void draw();
+	void mouseDragged(int x, int y, int button);
+	void mousePressed(int x, int y, int button);
+	void mouseReleased(int x, int y, int button);
 	void printMessageHistory();
 	
 	buttonTrigger	doneButton;
@@ -38,7 +42,7 @@ public:
 	bool bSpeakWords;
 	
 	
-	vector <buttonTrigger> letterButtons;
+	vector <buttonTransformable> letterButtons;
 	string * buttons;
 	vector <string> letterButtons_lower;
 	vector<string> triggeredMessageLog;

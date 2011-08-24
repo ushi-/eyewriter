@@ -7,7 +7,10 @@
  *
  */
 
-#pragma once
+#ifndef BUTTONRECT_H
+#define BUTTONRECT_H
+
+//#pragma once
 
 #include "ofMain.h"
 
@@ -41,3 +44,5 @@ class buttonRect : public ofRectangle{
 	bool hasLeft;
 	float counter;
 };
+
+#endif

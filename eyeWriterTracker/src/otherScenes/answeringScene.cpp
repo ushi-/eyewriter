@@ -41,7 +41,7 @@ void answeringScene::setup(){
 	float bHeight = 100;
 	
 	for (int i = 0; i < 36; i++){
-		buttonTrigger nButton;
+		buttonTransformable nButton;
 		nButton.setup(buttons[i], xStart + xadd2, yStart + yadd2, bWidth, bHeight);
 		nButton.setMaxCounter(buttonCount);
 		nButton.setRetrigger(false);
@@ -64,31 +64,31 @@ void answeringScene::setup(){
 	
 	xadd = 350;
 	
-	buttonTrigger semiButton;
+	buttonTransformable semiButton;
 	semiButton.setup(":\n;", 825+xadd, 295+yadd, bWidth, bHeight);
 	semiButton.setMaxCounter(buttonCount);
 	semiButton.setRetrigger(false);
 	letterButtons.push_back(semiButton);
 	
-	buttonTrigger quoteButton;
+	buttonTransformable quoteButton;
 	quoteButton.setup("\"\n'", 915+xadd, 295+yadd, bWidth, bHeight);
 	quoteButton.setMaxCounter(buttonCount);
 	quoteButton.setRetrigger(false);
 	letterButtons.push_back(quoteButton);
 	
-	buttonTrigger commaButton;
+	buttonTransformable commaButton;
 	commaButton.setup("<\n,", 735+xadd, 385+yadd, bWidth, bHeight);
 	commaButton.setMaxCounter(buttonCount);
 	commaButton.setRetrigger(false);
 	letterButtons.push_back(commaButton);
 	
-	buttonTrigger periodButton;
+	buttonTransformable periodButton;
 	periodButton.setup(">\n.", 825+xadd, 385+yadd, bWidth, bHeight);
 	periodButton.setMaxCounter(buttonCount);
 	periodButton.setRetrigger(false);
 	letterButtons.push_back(periodButton);
 	
-	buttonTrigger questionButton;
+	buttonTransformable questionButton;
 	questionButton.setup("?\n/", 915+xadd, 385+yadd, bWidth, bHeight);
 	questionButton.setMaxCounter(buttonCount);
 	questionButton.setRetrigger(false);
@@ -101,26 +101,26 @@ void answeringScene::setup(){
 	//	letterButtons.push_back(deleteButton);
 	
 	
-	buttonTrigger enterButton;
+	buttonTransformable enterButton;
 	enterButton.setup("DELETE", 195+xadd, 475+yadd, bWidth*2+15, bHeight);
 	enterButton.setMaxCounter(buttonCount);
 	enterButton.setRetrigger(true);
 	letterButtons.push_back(enterButton);
 	
-	buttonTrigger speakAllButton;
+	buttonTransformable speakAllButton;
 	speakAllButton.setup("SPEAK", 15+xadd - 200, 475+yadd, bWidth*2+15, bHeight);
 	speakAllButton.setMaxCounter(buttonCount);
 	speakAllButton.setRetrigger(false);
 	letterButtons.push_back(speakAllButton);
 	
 	
-	buttonTrigger clearButton;
+	buttonTransformable clearButton;
 	clearButton.setup("CLEAR ALL", 15+xadd, 475+yadd, bWidth*2+15, bHeight);
 	clearButton.setMaxCounter(buttonCount);
 	clearButton.setRetrigger(false);
 	letterButtons.push_back(clearButton);
 	
-	buttonTrigger spaceButton;
+	buttonTransformable spaceButton;
 	spaceButton.setup("SPACE", 375+xadd, 475+yadd, bWidth*4.5+7, bHeight);
 	spaceButton.setMaxCounter(buttonCount);
 	spaceButton.setRetrigger(false);
@@ -413,4 +413,35 @@ void answeringScene::draw(){
 	//drawCursor();
 }
 
+void answeringScene::mousePressed(int x, int y, int button) {
+	vector<buttonTransformable>::iterator it = letterButtons.begin();
+	while (it != letterButtons.end()) {
+		if(it->x <= x && x <= it->x + it->width &&
+		   it->y <= y && y <= it->y + it->height) {
+			it->mousePressed(x, y, button);
+		}
+		++it;
+	}
+}
 
+void answeringScene::mouseDragged(int x, int y, int button) {
+	vector<buttonTransformable>::iterator it = letterButtons.begin();
+	while (it != letterButtons.end()) {
+		if(it->pressing) {
+			it->mouseDragged(x, y, button);
+		}
+		++it;
+	}
+}
+
+void answeringScene::mouseReleased(int x, int y, int button) {
+	vector<buttonTransformable>::iterator it = letterButtons.begin();
+	while (it != letterButtons.end()) {
+		if(it->x <= x && x <= it->x + it->width &&
+		   it->y <= y && y <= it->y + it->height) {
+			it->mouseReleased(x, y, button);
+		}
+		++it;
+	}
+
+}

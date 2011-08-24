@@ -226,28 +226,25 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-	
 	if (mode == MODE_TRACKING)			TM.mouseDragged(x, y, button);
 	if (mode == MODE_CALIBRATING)		CM.mouseDragged(x, y, button);
+	if (mode == MODE_ANSWER)			answerScene.mouseDragged(x, y, button);
 
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
-	
 	if (mode == MODE_TRACKING)			TM.mousePressed(x, y, button);
 	if (mode == MODE_CALIBRATING)		CM.mousePressed(x, y, button);
-
+	if (mode == MODE_ANSWER)			answerScene.mousePressed(x, y, button);
 
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-	
 	if (mode == MODE_TRACKING)			TM.mouseReleased();
 	if (mode == MODE_CALIBRATING)		CM.mouseReleased(x,y,button);
-
+	if (mode == MODE_ANSWER)			answerScene.mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------

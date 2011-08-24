@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E5016661405049C00E92C7D /* buttonTransformable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5016641405049C00E92C7D /* buttonTransformable.cpp */; };
 		4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */; };
 		CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1B1B031228715100AAEF89 /* pongScene.cpp */; };
 		CF5E82AE12283C29004404A1 /* speak.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AB12283C29004404A1 /* speak.m */; };
@@ -39,8 +40,6 @@
 		CFD61D8C12272A410026C82D /* calibrationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D8612272A410026C82D /* calibrationManager.cpp */; };
 		CFD61D8D12272A410026C82D /* calibrationManager_controlPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D8812272A410026C82D /* calibrationManager_controlPanel.cpp */; };
 		CFD61D8E12272A410026C82D /* pointFitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D8912272A410026C82D /* pointFitter.cpp */; };
-		CFD61DD212272AAF0026C82D /* buttonRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D9112272AAE0026C82D /* buttonRect.cpp */; };
-		CFD61DD312272AAF0026C82D /* buttonTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D9312272AAE0026C82D /* buttonTrigger.cpp */; };
 		CFD61DD412272AAF0026C82D /* guiBaseObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D9612272AAE0026C82D /* guiBaseObject.cpp */; };
 		CFD61DD512272AAF0026C82D /* guiCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D9812272AAE0026C82D /* guiCallback.cpp */; };
 		CFD61DD612272AAF0026C82D /* guiCallbackValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD61D9A12272AAE0026C82D /* guiCallbackValue.cpp */; };
@@ -174,6 +173,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E5016641405049C00E92C7D /* buttonTransformable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonTransformable.cpp; sourceTree = "<group>"; };
+		4E5016651405049C00E92C7D /* buttonTransformable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonTransformable.h; sourceTree = "<group>"; };
 		4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = answeringScene.cpp; sourceTree = "<group>"; };
 		4EA72F0E1404F2A900B4AF68 /* answeringScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answeringScene.h; sourceTree = "<group>"; };
 		CF1B1B031228715100AAEF89 /* pongScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pongScene.cpp; sourceTree = "<group>"; };
@@ -252,10 +253,6 @@
 		CFD61D8812272A410026C82D /* calibrationManager_controlPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = calibrationManager_controlPanel.cpp; sourceTree = "<group>"; };
 		CFD61D8912272A410026C82D /* pointFitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pointFitter.cpp; sourceTree = "<group>"; };
 		CFD61D8A12272A410026C82D /* pointFitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pointFitter.h; sourceTree = "<group>"; };
-		CFD61D9112272AAE0026C82D /* buttonRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonRect.cpp; sourceTree = "<group>"; };
-		CFD61D9212272AAE0026C82D /* buttonRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonRect.h; sourceTree = "<group>"; };
-		CFD61D9312272AAE0026C82D /* buttonTrigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonTrigger.cpp; sourceTree = "<group>"; };
-		CFD61D9412272AAE0026C82D /* buttonTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonTrigger.h; sourceTree = "<group>"; };
 		CFD61D9612272AAE0026C82D /* guiBaseObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiBaseObject.cpp; sourceTree = "<group>"; };
 		CFD61D9712272AAE0026C82D /* guiBaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiBaseObject.h; sourceTree = "<group>"; };
 		CFD61D9812272AAE0026C82D /* guiCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiCallback.cpp; sourceTree = "<group>"; };
@@ -761,10 +758,6 @@
 		CFD61D9012272AAE0026C82D /* buttons */ = {
 			isa = PBXGroup;
 			children = (
-				CFD61D9112272AAE0026C82D /* buttonRect.cpp */,
-				CFD61D9212272AAE0026C82D /* buttonRect.h */,
-				CFD61D9312272AAE0026C82D /* buttonTrigger.cpp */,
-				CFD61D9412272AAE0026C82D /* buttonTrigger.h */,
 			);
 			path = buttons;
 			sourceTree = "<group>";
@@ -1095,6 +1088,8 @@
 		CFED18C512283BC000C74D7A /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				4E5016641405049C00E92C7D /* buttonTransformable.cpp */,
+				4E5016651405049C00E92C7D /* buttonTransformable.h */,
 				CFED18C612283BC000C74D7A /* buttonRect.cpp */,
 				CFED18C712283BC000C74D7A /* buttonRect.h */,
 				CFED18C812283BC000C74D7A /* buttonState.h */,
@@ -1558,8 +1553,6 @@
 				CFD61D8C12272A410026C82D /* calibrationManager.cpp in Sources */,
 				CFD61D8D12272A410026C82D /* calibrationManager_controlPanel.cpp in Sources */,
 				CFD61D8E12272A410026C82D /* pointFitter.cpp in Sources */,
-				CFD61DD212272AAF0026C82D /* buttonRect.cpp in Sources */,
-				CFD61DD312272AAF0026C82D /* buttonTrigger.cpp in Sources */,
 				CFD61DD412272AAF0026C82D /* guiBaseObject.cpp in Sources */,
 				CFD61DD512272AAF0026C82D /* guiCallback.cpp in Sources */,
 				CFD61DD612272AAF0026C82D /* guiCallbackValue.cpp in Sources */,
@@ -1624,6 +1617,7 @@
 				CF5E82AF12283C29004404A1 /* typingScene.cpp in Sources */,
 				CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */,
 				4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */,
+				4E5016661405049C00E92C7D /* buttonTransformable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

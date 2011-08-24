@@ -7,6 +7,11 @@
  *
  */
 
+#ifndef BUTTONTRIGGER_H
+#define BUTTONTRIGGER_H
+
+//#pragma once
+
 #include "ofMain.h"
 #include "buttonRect.h"
 
@@ -116,3 +121,5 @@ class buttonTrigger : public buttonRect{
 	
 
 };
+
+#endif
