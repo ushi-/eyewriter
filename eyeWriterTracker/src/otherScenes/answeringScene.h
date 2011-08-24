@@ -16,6 +16,7 @@
 #include "buttonToggle.h"
 #include "buttonTrigger.h"
 #include "buttonTransformable.h"
+#include "buttonQuesoglc.h"
 
 #include "ofxXmlSettings.h"
 #include "baseScene.h"
@@ -39,7 +40,7 @@ public:
 	void printMessageHistory();
 	
 	
-	vector <buttonTransformable> buttons;
+	vector <buttonQuesoglc> buttons;
 	buttonRect addButton;
 	
 	ofTrueTypeFont  helvetica;	

@@ -42,7 +42,7 @@ class buttonTrigger : public buttonRect{
 		maxCount = nCounter;
 	}
 	
-	void setup( string onName, float xIn, float yIn, float w, float h ){
+	virtual void setup( string onName, float xIn, float yIn, float w, float h ){
 		displayText = onName;
 		
 		x		= xIn;
@@ -122,7 +122,7 @@ class buttonTrigger : public buttonRect{
 		return changed;
 	}	
 	
-	void draw(float opacity = 255){
+	virtual void draw(float opacity = 255){
 		ofFill();
 		
 		float pctActive = ofMap(pct, 0.0, maxCount, 0.0, 110.0, true);		

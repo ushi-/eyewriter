@@ -20,7 +20,7 @@ class buttonTransformable : public buttonTrigger {
 	
 public:
 	
-	buttonTransformable(){
+	buttonTransformable() : buttonTrigger() {
 		dragOrigin = ofPoint(0, 0);
 		dragging = false;
 		pressing = false;
