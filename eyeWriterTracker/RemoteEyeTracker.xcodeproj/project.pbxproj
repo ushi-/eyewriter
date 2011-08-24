@@ -11,7 +11,7 @@
 		4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018231405493000E92C7D /* libfontconfig.a */; };
 		4E5018291405493100E92C7D /* libGLC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018241405493000E92C7D /* libGLC.a */; };
 		4E50182A1405493100E92C7D /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018251405493000E92C7D /* libiconv.a */; };
-		4E50182C14054FB600E92C7D /* buttonQuesoglc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E50182B14054FB600E92C7D /* buttonQuesoglc.cpp */; };
+		4E50182C14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E50182B14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp */; };
 		4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */; };
 		CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1B1B031228715100AAEF89 /* pongScene.cpp */; };
 		CF5E82AE12283C29004404A1 /* speak.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AB12283C29004404A1 /* speak.m */; };
@@ -183,8 +183,8 @@
 		4E5018241405493000E92C7D /* libGLC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGLC.a; sourceTree = "<group>"; };
 		4E5018251405493000E92C7D /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiconv.a; sourceTree = "<group>"; };
 		4E5018271405493000E92C7D /* glc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glc.h; sourceTree = "<group>"; };
-		4E50182B14054FB600E92C7D /* buttonQuesoglc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonQuesoglc.cpp; sourceTree = "<group>"; };
-		4E50182D14054FC700E92C7D /* buttonQuesoglc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonQuesoglc.h; sourceTree = "<group>"; };
+		4E50182B14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonTriggerTransformableQuesoglc.cpp; sourceTree = "<group>"; };
+		4E50182D14054FC700E92C7D /* buttonTriggerTransformableQuesoglc.h */ = {isa = PBXFileReference; fileEncoding = 4; path = buttonTriggerTransformableQuesoglc.h; sourceTree = "<group>"; };
 		4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = answeringScene.cpp; sourceTree = "<group>"; };
 		4EA72F0E1404F2A900B4AF68 /* answeringScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answeringScene.h; sourceTree = "<group>"; };
 		CF1B1B031228715100AAEF89 /* pongScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pongScene.cpp; sourceTree = "<group>"; };
@@ -1131,8 +1131,8 @@
 			children = (
 				4E5016641405049C00E92C7D /* buttonTransformable.cpp */,
 				4E5016651405049C00E92C7D /* buttonTransformable.h */,
-				4E50182B14054FB600E92C7D /* buttonQuesoglc.cpp */,
-				4E50182D14054FC700E92C7D /* buttonQuesoglc.h */,
+				4E50182B14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp */,
+				4E50182D14054FC700E92C7D /* buttonTriggerTransformableQuesoglc.h */,
 				CFED18C612283BC000C74D7A /* buttonRect.cpp */,
 				CFED18C712283BC000C74D7A /* buttonRect.h */,
 				CFED18C812283BC000C74D7A /* buttonState.h */,
@@ -1661,7 +1661,7 @@
 				CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */,
 				4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */,
 				4E5016661405049C00E92C7D /* buttonTransformable.cpp in Sources */,
-				4E50182C14054FB600E92C7D /* buttonQuesoglc.cpp in Sources */,
+				4E50182C14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

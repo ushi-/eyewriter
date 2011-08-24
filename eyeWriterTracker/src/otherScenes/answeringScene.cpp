@@ -41,7 +41,8 @@ void answeringScene::setup(){
 	//buttonCount=390;
 	ofBackground(255, 255, 255);
 	
-	buttonQuesoglc yesButton;
+	
+	buttonTriggerTransformableQuesoglc yesButton;
 	yesButton.setup("イートハーヴォ", 100, 100, 300, 200);
 	yesButton.setMaxCounter(buttonCount);
 	yesButton.setRetrigger(false);
@@ -55,7 +56,7 @@ void answeringScene::update(float mouseX, float mouseY){
 	mx = mouseX;
 	my = mouseY;
 	
-	vector<buttonQuesoglc>::iterator it = buttons.begin();
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if (it->update(mx, my)) {
 			
@@ -77,7 +78,7 @@ void answeringScene::draw(){
 //	jaFont.drawString("牛desu", ofGetWidth()/2-rect.width/2, ofGetHeight()/2+rect.height/2);
 //	ofSetColor(255, 255, 255);
 	
-	vector<buttonQuesoglc>::iterator it = buttons.begin();
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		it->draw();
 		++it;
@@ -87,7 +88,7 @@ void answeringScene::draw(){
 }
 
 void answeringScene::mousePressed(int x, int y, int button) {
-	vector<buttonQuesoglc>::iterator it = buttons.begin();
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if (it->inRect(x, y)) {
 			it->mousePressed(x, y, button);
@@ -97,7 +98,7 @@ void answeringScene::mousePressed(int x, int y, int button) {
 }
 
 void answeringScene::mouseDragged(int x, int y, int button) {
-	vector<buttonQuesoglc>::iterator it = buttons.begin();
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if(it->pressing) {
 			it->mouseDragged(x, y, button);
@@ -107,7 +108,7 @@ void answeringScene::mouseDragged(int x, int y, int button) {
 }
 
 void answeringScene::mouseReleased(int x, int y, int button) {
-	vector<buttonQuesoglc>::iterator it = buttons.begin();
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if (it->inRect(x, y)) {
 			it->mouseReleased(x, y, button);
