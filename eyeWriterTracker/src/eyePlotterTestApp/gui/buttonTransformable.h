@@ -51,7 +51,7 @@ public:
 	}
 	
 	void mouseReleased(int x, int y, int button) {
-		if (!dragging && !scaling) {
+		if (!dragging && !scaling && pressing) {
 			// start changing text
 		}
 		pressing = false;

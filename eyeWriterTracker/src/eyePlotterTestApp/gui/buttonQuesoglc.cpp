@@ -6,4 +6,4 @@
 //  Copyright (c) 2011 Yosuke Ushigome. All rights reserved.
 //
 
-#include "buttonQuesoglc.h"
+#include <iostream>

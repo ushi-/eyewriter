@@ -40,7 +40,9 @@ void answeringScene::setup(){
 	glcStringType(GLC_UTF8_QSO);	
 	//buttonCount=390;
 	ofBackground(255, 255, 255);
-	
+
+	addButton.setup("クリックしてボタンを追加", 400, 10, 360, 100);
+	removeButotn.setup("削除したいボタンをドロップ", 800, 10, 360, 100);
 	
 	buttonTriggerTransformableQuesoglc yesButton;
 	yesButton.setup("イートハーヴォ", 100, 100, 300, 200);
@@ -72,11 +74,9 @@ void answeringScene::update(float mouseX, float mouseY){
 //--------------------------------------------------------------
 void answeringScene::draw(){
 	ofPushStyle();	
-	
-//	ofRectangle rect = jaFont.getStringBoundingBox("牛desu", 0, 0);
-//	ofSetColor(0, 0, 0);
-//	jaFont.drawString("牛desu", ofGetWidth()/2-rect.width/2, ofGetHeight()/2+rect.height/2);
-//	ofSetColor(255, 255, 255);
+
+	addButton.draw();
+	removeButotn.draw();
 	
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
@@ -88,10 +88,19 @@ void answeringScene::draw(){
 }
 
 void answeringScene::mousePressed(int x, int y, int button) {
-	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
-	while (it != buttons.end()) {
+	if (addButton.inRect(x, y)) {
+		buttonTriggerTransformableQuesoglc newButton;
+		newButton.setup("新しいボタン", 100, 100, 300, 200);
+		newButton.setMaxCounter(buttonCount);
+		newButton.setRetrigger(false);
+		buttons.push_back(newButton);
+	}
+	
+	vector<buttonTriggerTransformableQuesoglc>::reverse_iterator it = buttons.rbegin();
+	while (it != buttons.rend()) {
 		if (it->inRect(x, y)) {
 			it->mousePressed(x, y, button);
+			break;
 		}
 		++it;
 	}
@@ -111,6 +120,10 @@ void answeringScene::mouseReleased(int x, int y, int button) {
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if (it->inRect(x, y)) {
+			if (it->dragging && removeButotn.inRect(x, y)){
+				it = buttons.erase(it);
+				break;
+			}
 			it->mouseReleased(x, y, button);
 		}
 		++it;

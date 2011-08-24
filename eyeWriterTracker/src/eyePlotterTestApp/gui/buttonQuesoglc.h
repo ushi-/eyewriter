@@ -9,18 +9,18 @@
 #ifndef RemoteEyeTracker_buttonQuesoglc_h
 #define RemoteEyeTracker_buttonQuesoglc_h
 
-#include "buttonTransformable.h"
+#include "ofMain.h"
+#include "buttonRect.h"
 #include "glc.h"
 
-class buttonQuesoglc : public buttonTransformable {
-	
+class buttonQuesoglc : public buttonRect {
 public:
 	
-	buttonQuesoglc() : buttonTransformable() {
+	buttonQuesoglc():buttonRect() {
 		textWidth = 0;
 		textHeight = 0;
 	}
-
+	
 	void setDisplayText (string onName) {
 		displayText = onName;
 		
@@ -31,7 +31,7 @@ public:
 		textWidth = stringMetric[4] - stringMetric[6];
 		textHeight = stringMetric[7] - stringMetric[1];
 	}
-	
+
 	virtual void setup( string onName, float xIn, float yIn, float w, float h ){
 		setDisplayText(onName);
 		
@@ -39,22 +39,11 @@ public:
 		y		= yIn;
 		width	= w;
 		height	= h;
-		numTriggers = 0;
-		flashLength = 0.2;
 	}
 	
 	void draw(float opacity = 255){
 		ofFill();
-		
-		float pctActive = ofMap(pct, 0.0, maxCount, 0.0, 110.0, true);		
-		
-		//pctActive = ofClamp(pctActive, 0, 110.0);	
-		if( bFlash){
-			ofSetColor(0, 100, 240, opacity);
-		}else{
-			ofSetColor(120 - pctActive, 120+pctActive*2, 120 - pctActive, opacity);
-		}
-		
+		ofSetColor(120, 120, 120, opacity);		
 		ofRect(x, y, width, height); 
 		
 		ofNoFill();
@@ -70,35 +59,11 @@ public:
 		glcRenderString(displayText.c_str());
 		glPopMatrix();
 		glDisable(GL_TEXTURE_2D);
-
-//		if (!bHasFont){
-//			float textWidth = 8.0f * displayText.length();
-//			float remainX = (width - textWidth)/2;
-//			
-//			float textHeight = 14.0f;
-//			float remainY = (height - textHeight)/2.0f + (textHeight/2.0f);
-//			
-//			ofSetColor(100, 100, 160);
-//			ofDrawBitmapString(displayText, x + remainX, y + remainY);
-//		} else {
-//			ofRectangle bounds = font->getStringBoundingBox(displayText, 0,0);
-//			
-//			float textWidth = bounds.width;
-//			float remainX = (width - textWidth)/2;
-//			
-//			float textHeight = bounds.height;
-//			float remainY = (height - textHeight)/2.0f + (textHeight/2.0f);
-//			ofSetColor(60, 60, 60);
-//			font->drawString(displayText, x + remainX, y + remainY);
-//		}
-		
-		//ofDrawBitmapString("pctActive is" +ofToString(pct), 200, y);
 	}
-	
+
 	float textWidth;
 	float textHeight;
-	
+	string displayText;
 };
-
 
 #endif
