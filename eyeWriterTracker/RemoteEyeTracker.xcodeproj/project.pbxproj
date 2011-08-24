@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4E5016661405049C00E92C7D /* buttonTransformable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E5016641405049C00E92C7D /* buttonTransformable.cpp */; };
+		4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018231405493000E92C7D /* libfontconfig.a */; };
+		4E5018291405493100E92C7D /* libGLC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018241405493000E92C7D /* libGLC.a */; };
+		4E50182A1405493100E92C7D /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018251405493000E92C7D /* libiconv.a */; };
 		4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */; };
 		CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1B1B031228715100AAEF89 /* pongScene.cpp */; };
 		CF5E82AE12283C29004404A1 /* speak.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AB12283C29004404A1 /* speak.m */; };
@@ -175,6 +178,10 @@
 /* Begin PBXFileReference section */
 		4E5016641405049C00E92C7D /* buttonTransformable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonTransformable.cpp; sourceTree = "<group>"; };
 		4E5016651405049C00E92C7D /* buttonTransformable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonTransformable.h; sourceTree = "<group>"; };
+		4E5018231405493000E92C7D /* libfontconfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfontconfig.a; sourceTree = "<group>"; };
+		4E5018241405493000E92C7D /* libGLC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGLC.a; sourceTree = "<group>"; };
+		4E5018251405493000E92C7D /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiconv.a; sourceTree = "<group>"; };
+		4E5018271405493000E92C7D /* glc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glc.h; sourceTree = "<group>"; };
 		4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = answeringScene.cpp; sourceTree = "<group>"; };
 		4EA72F0E1404F2A900B4AF68 /* answeringScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answeringScene.h; sourceTree = "<group>"; };
 		CF1B1B031228715100AAEF89 /* pongScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pongScene.cpp; sourceTree = "<group>"; };
@@ -496,12 +503,42 @@
 				E4C246DA10CCAE22004149E2 /* freeimage.a in Frameworks */,
 				CFD61E3A12272ABA0026C82D /* libdc1394.a in Frameworks */,
 				CFD61E3E12272ABA0026C82D /* openCV.a in Frameworks */,
+				4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */,
+				4E5018291405493100E92C7D /* libGLC.a in Frameworks */,
+				4E50182A1405493100E92C7D /* libiconv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E5018211405493000E92C7D /* quesoglc */ = {
+			isa = PBXGroup;
+			children = (
+				4E5018221405493000E92C7D /* deps */,
+				4E5018261405493000E92C7D /* GL */,
+			);
+			path = quesoglc;
+			sourceTree = "<group>";
+		};
+		4E5018221405493000E92C7D /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				4E5018231405493000E92C7D /* libfontconfig.a */,
+				4E5018241405493000E92C7D /* libGLC.a */,
+				4E5018251405493000E92C7D /* libiconv.a */,
+			);
+			path = deps;
+			sourceTree = "<group>";
+		};
+		4E5018261405493000E92C7D /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				4E5018271405493000E92C7D /* glc.h */,
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
 		CF5E82A912283C29004404A1 /* otherScenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +557,7 @@
 		CFD61CE1122729D20026C82D /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
+				4E5018211405493000E92C7D /* quesoglc */,
 				CFD8346F122828A800694F62 /* ofxFileHelper */,
 				CFD61DEF12272ABA0026C82D /* ofxLibdc */,
 				CFD61E1112272ABA0026C82D /* ofxOpenCv */,
@@ -1669,6 +1707,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = ReleaseUniversal;
 		};
@@ -1709,8 +1748,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/quesoglcTest/quesoglc/deps\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/quesoglc/deps\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
@@ -1720,6 +1764,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../libs/rtAudio/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/src/addons/ofxLibdc/libs/osx/lib\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/src/addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/lib\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)Universal";
 				WRAPPER_EXTENSION = app;
@@ -1759,6 +1804,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1796,6 +1842,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -1838,8 +1885,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/quesoglcTest/quesoglc/deps\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/quesoglc/deps\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
@@ -1849,6 +1901,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../libs/rtAudio/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/src/addons/ofxLibdc/libs/osx/lib\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/src/addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/lib\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -1893,8 +1946,13 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/quesoglcTest/quesoglc/deps\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/quesoglc/deps\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
@@ -1904,6 +1962,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../../../libs/rtAudio/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/src/addons/ofxLibdc/libs/osx/lib\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "\"$(SRCROOT)/src/addons/ofxOpenCv/libs/opencv/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../../../addons/ofxFTGL/lib\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

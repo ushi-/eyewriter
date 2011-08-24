@@ -20,6 +20,7 @@
 #include "ofxXmlSettings.h"
 #include "baseScene.h"
 
+
 extern "C" {
 #include "speak.h"
 };
@@ -37,28 +38,9 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void printMessageHistory();
 	
-	buttonTrigger	doneButton;
 	
-	bool bSpeakWords;
+	vector <buttonTransformable> buttons;
+	buttonRect addButton;
 	
-	
-	vector <buttonTransformable> letterButtons;
-	string * buttons;
-	vector <string> letterButtons_lower;
-	vector<string> triggeredMessageLog;
-	vector<int> triggeredKeyCodes;
-	//vector<string> message;
-	vector<buttonToggle> actionButtons;
-	string displayMessage;
-	int carriageReturnCounter;
-	
-	ofTrueTypeFont  franklinBook;
-	ofTrueTypeFont  franklinBookSmall;
-	ofTrueTypeFont	verdana;
-	ofTrueTypeFont  franklinBookLarge;
-	bool shiftOn;
-	
-private:
-	void typedMessage(string msg);
-	
+	ofTrueTypeFont  helvetica;	
 };

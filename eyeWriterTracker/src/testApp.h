@@ -11,7 +11,6 @@
 #include "pongScene.h"
 #include "answeringScene.h"
 
-
 enum{
 	
 	MODE_TRACKING,	MODE_CALIBRATING,	MODE_TEST, MODE_DRAW,  MODE_TYPING, MODE_PONG, MODE_ANSWER

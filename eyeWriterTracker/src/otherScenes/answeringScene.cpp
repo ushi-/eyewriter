@@ -7,417 +7,129 @@
 //
 
 #include "answeringScene.h"
+#include "glc.h"
 
 //switch to gui
 extern  int buttonCount; 
 
+GLint ctx = 0;
+GLint font = 0;
+
 //--------------------------------------------------------------
 void answeringScene::setup(){
 	
-	franklinBook.loadFont("fonts/HelveticaNeueMed.ttf", 32);
+	helvetica.loadFont("fonts/HelveticaNeueMed.ttf", 32);
+//	jaFont.loadFont("fonts/AxisCondStd-Bold.otf", 32, true);
 	
-	franklinBookSmall.loadFont("fonts/HelveticaNeueMed.ttf", 16);
-	carriageReturnCounter = 0;
+	ctx = glcGenContext();
+	glcContext(ctx);
+	
+	glcAppendCatalog(ofToDataPath("fonts").c_str());
+	
+//	glcAppendCatalog("/System/Library/Fonts");
+	
+	font = glcGenFontID();
+	glcNewFontFromFamily(font, "AXIS Condensed Std");
+	glcFontFace(font, "Bold");
+	glcFont(font);
+	
+	glcRenderStyle(GLC_TEXTURE);
+    glcEnable(GLC_GL_OBJECTS);
+    glcEnable(GLC_MIPMAP);
+	glcEnable(GLC_HINTING_QSO);
+	glcStringType(GLC_UTF8_QSO);	
 	//buttonCount=390;
 	ofBackground(255, 255, 255);
-	shiftOn = false;
 	
-	string buttons[36] = 
-	{"!\n1", "@\n2", "#\n3", "$\n4", "%\n5", "^\n6", "&\n7", "*\n8", "(\n9", ")\n0", 
-		"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", 
-		"K", "L", "M", "N", "O", "P", "Q", "R", "S", 
-		"T", "U", "V", "W", "X", "Y", "Z"
-	};
-	
-	bSpeakWords = false;
-	
-	float xadd2 = 0;
-	float yadd2 = 200;
-	
-	
-	float xStart  = 15;
-	float yStart  = 15;
-	float bWidth  = 100;
-	float bHeight = 100;
-	
-	for (int i = 0; i < 36; i++){
-		buttonTransformable nButton;
-		nButton.setup(buttons[i], xStart + xadd2, yStart + yadd2, bWidth, bHeight);
-		nButton.setMaxCounter(buttonCount);
-		nButton.setRetrigger(false);
-		letterButtons.push_back(nButton);
-		
-		xStart += 120;
-		if (xStart > 1100){
-			//if (xStart > 900){
-			xStart = 90;
-			yStart += 120;
-		}
-		
-	}
-	
-	float xadd = 150;
-	float yadd = 250;
-	
-	bWidth  = 75;
-	bHeight = 75;
-	
-	xadd = 350;
-	
-	buttonTransformable semiButton;
-	semiButton.setup(":\n;", 825+xadd, 295+yadd, bWidth, bHeight);
-	semiButton.setMaxCounter(buttonCount);
-	semiButton.setRetrigger(false);
-	letterButtons.push_back(semiButton);
-	
-	buttonTransformable quoteButton;
-	quoteButton.setup("\"\n'", 915+xadd, 295+yadd, bWidth, bHeight);
-	quoteButton.setMaxCounter(buttonCount);
-	quoteButton.setRetrigger(false);
-	letterButtons.push_back(quoteButton);
-	
-	buttonTransformable commaButton;
-	commaButton.setup("<\n,", 735+xadd, 385+yadd, bWidth, bHeight);
-	commaButton.setMaxCounter(buttonCount);
-	commaButton.setRetrigger(false);
-	letterButtons.push_back(commaButton);
-	
-	buttonTransformable periodButton;
-	periodButton.setup(">\n.", 825+xadd, 385+yadd, bWidth, bHeight);
-	periodButton.setMaxCounter(buttonCount);
-	periodButton.setRetrigger(false);
-	letterButtons.push_back(periodButton);
-	
-	buttonTransformable questionButton;
-	questionButton.setup("?\n/", 915+xadd, 385+yadd, bWidth, bHeight);
-	questionButton.setMaxCounter(buttonCount);
-	questionButton.setRetrigger(false);
-	letterButtons.push_back(questionButton);
-	
-	//buttonTrigger deleteButton;
-	//	deleteButton.setup("ENTER", 735+xadd, 475+yadd, bWidth*2+15, bHeight);
-	//	deleteButton.setMaxCounter(buttonCount);
-	//	deleteButton.setRetrigger(true);
-	//	letterButtons.push_back(deleteButton);
-	
-	
-	buttonTransformable enterButton;
-	enterButton.setup("DELETE", 195+xadd, 475+yadd, bWidth*2+15, bHeight);
-	enterButton.setMaxCounter(buttonCount);
-	enterButton.setRetrigger(true);
-	letterButtons.push_back(enterButton);
-	
-	buttonTransformable speakAllButton;
-	speakAllButton.setup("SPEAK", 15+xadd - 200, 475+yadd, bWidth*2+15, bHeight);
-	speakAllButton.setMaxCounter(buttonCount);
-	speakAllButton.setRetrigger(false);
-	letterButtons.push_back(speakAllButton);
-	
-	
-	buttonTransformable clearButton;
-	clearButton.setup("CLEAR ALL", 15+xadd, 475+yadd, bWidth*2+15, bHeight);
-	clearButton.setMaxCounter(buttonCount);
-	clearButton.setRetrigger(false);
-	letterButtons.push_back(clearButton);
-	
-	buttonTransformable spaceButton;
-	spaceButton.setup("SPACE", 375+xadd, 475+yadd, bWidth*4.5+7, bHeight);
-	spaceButton.setMaxCounter(buttonCount);
-	spaceButton.setRetrigger(false);
-	letterButtons.push_back(spaceButton);
-	
-	buttonToggle capsButton;
-	capsButton.setup("CAPS ON", "CAPS OFF", false, 800+xadd+100, 475+yadd, bWidth+15, bHeight);
-	capsButton.setMaxCounter(buttonCount);
-	actionButtons.push_back(capsButton);
-	
-	
-	buttonToggle speakButton;
-	speakButton.setup("SPEAK\nWORDS\nON", "SPEAK\nWORDS\nOFF", false, 800+xadd+100, 175+yadd, bWidth+15, bHeight);
-	speakButton.setMaxCounter(buttonCount);
-	actionButtons.push_back(speakButton);
-	
-	
-	//
-	letterButtons_lower.push_back("1");
-	letterButtons_lower.push_back("2");
-	letterButtons_lower.push_back("3");
-	letterButtons_lower.push_back("4");
-	letterButtons_lower.push_back("5");
-	letterButtons_lower.push_back("6");
-	letterButtons_lower.push_back("7");
-	letterButtons_lower.push_back("8");
-	letterButtons_lower.push_back("9");
-	letterButtons_lower.push_back("0");
-	
-	letterButtons_lower.push_back("a");
-	letterButtons_lower.push_back("b");
-	letterButtons_lower.push_back("c");
-	letterButtons_lower.push_back("d");
-	letterButtons_lower.push_back("e");
-	letterButtons_lower.push_back("f");
-	letterButtons_lower.push_back("g");
-	letterButtons_lower.push_back("h");
-	letterButtons_lower.push_back("i");
-	letterButtons_lower.push_back("j");
-	
-	letterButtons_lower.push_back("k");
-	letterButtons_lower.push_back("l");
-	
-	letterButtons_lower.push_back("m");
-	
-	letterButtons_lower.push_back("n");
-	letterButtons_lower.push_back("o");
-	letterButtons_lower.push_back("p");
-	letterButtons_lower.push_back("q");
-	letterButtons_lower.push_back("r");
-	letterButtons_lower.push_back("s");
-	
-	letterButtons_lower.push_back("t");
-	letterButtons_lower.push_back("u");
-	letterButtons_lower.push_back("v");
-	letterButtons_lower.push_back("w");
-	letterButtons_lower.push_back("x");
-	letterButtons_lower.push_back("y");
-	letterButtons_lower.push_back("z");
-	letterButtons_lower.push_back(";");
-	
-	letterButtons_lower.push_back("'");
-	letterButtons_lower.push_back(",");
-	letterButtons_lower.push_back(".");
-	letterButtons_lower.push_back("/");
-	
-	
-	for (int i = 0; i < letterButtons.size(); i++){
-		
-		letterButtons[i].setDisplayFont(&franklinBookSmall);
-	}
+	buttonTransformable yesButton;
+	yesButton.setup("Yes.", 100, 100, 300, 200);
+	yesButton.setMaxCounter(buttonCount);
+	yesButton.setRetrigger(false);
+	buttons.push_back(yesButton);
 	
 	mx = 0.0;
 	my = 0.0; 
-	
-	
-	
-	
 }
 //--------------------------------------------------------------
 void answeringScene::update(float mouseX, float mouseY){
 	mx = mouseX;
 	my = mouseY;
 	
+	vector<buttonTransformable>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		if (it->update(mx, my)) {
+			
+		}
+		++it;
+	}
+
+	
 	//ofSetFrameRate(100);
-	
-	for(int i = 0; i < letterButtons.size(); i++) {
-		letterButtons[i].setMaxCounter(buttonCount);
-		if(letterButtons[i].update(mx, my)) {
-			if ((carriageReturnCounter == 32)|(carriageReturnCounter == 31)) {
-				//displayMessage.push_back("\n");
-				//carriageReturnCounter = 0;
-			}
-			//else if (letterButtons[i].displayText == "ENTER"){
-			//				displayMessage.push_back("\n");
-			//				carriageReturnCounter = 0;
-			//			}
-			else if (letterButtons[i].displayText == "SPACE"){
-				
-				
-				if (bSpeakWords == true){
-					vector <string> wordsToSpeak = ofSplitString(displayMessage, " ");
-					
-					if (wordsToSpeak.size() > 0 && displayMessage.size() >= 1){
-						if (displayMessage[displayMessage.size()-1] != ' '){
-							
-							if (wordsToSpeak[wordsToSpeak.size()-1].size() > 0){
-								speakMe(	wordsToSpeak[wordsToSpeak.size()-1].c_str() );
-							}
-						}
-					}
-				}
-				displayMessage.push_back(' ');
-				carriageReturnCounter++;
-			}
-			else if (letterButtons[i].displayText == "CLEAR ALL"){
-				displayMessage.clear();
-				carriageReturnCounter = 0;
-			}
-			
-			else if (letterButtons[i].displayText == "SPEAK"){
-				if (displayMessage.size() > 0){
-					speakMe(displayMessage.c_str());
-				}
-			}
-			
-			else if (letterButtons[i].displayText == "DELETE"){
-				if (displayMessage.size()> 0){
-					displayMessage.resize (displayMessage.size () - 1);
-				}
-			}			
-			else if (shiftOn && (letterButtons[i].displayText == "!\n1")){
-				displayMessage.push_back('!');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "@\n2")){
-				displayMessage.push_back('@');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "#\n3")){
-				displayMessage.push_back('#');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "$\n4")){
-				displayMessage.push_back('$');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "%\n5")){
-				displayMessage.push_back('%');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "^\n6")){
-				displayMessage.push_back('^');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "&\n7")){
-				displayMessage.push_back('&');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "*\n8")){
-				displayMessage.push_back('*');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "(\n9")){
-				displayMessage.push_back('(');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == ")\n0")){
-				displayMessage.push_back(')');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == ":\n;")){
-				displayMessage.push_back(':');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "\"\n'")){
-				displayMessage.push_back('\"');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "<\n,")){
-				displayMessage.push_back('<');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == ">\n.")){
-				displayMessage.push_back('>');
-				carriageReturnCounter++;
-			}
-			else if (shiftOn && (letterButtons[i].displayText == "?\n/")){
-				displayMessage.push_back('?');
-				carriageReturnCounter++;
-			}
-			else {
-				if (shiftOn){
-					displayMessage.push_back(letterButtons[i].displayText.c_str()[0]);
-					//carriageReturnCounter += 2;
-				}
-				else {
-					displayMessage.push_back(letterButtons_lower[i].c_str()[0]);
-					//carriageReturnCounter++;
-				}
-			}
-		}
-		
-	}
-	
-	for (int i = 0; i < actionButtons.size(); i++){
-		actionButtons[i].setMaxCounter(buttonCount);
-		if(actionButtons[i].update(mx, my)) {
-			if (actionButtons[i].displayText[1] == "CAPS ON"){
-				if (shiftOn) shiftOn = false;
-				else shiftOn = true;
-			}
-		}
-	}
-	
-	
-	bSpeakWords = false;
-	for (int i = 0; i < actionButtons.size(); i++){
-		if (actionButtons[i].displayText[1] == "SPEAK\nWORDS\nON"){
-			if (actionButtons[i].active){
-				bSpeakWords = true;	
-			}
-		}
-	}
-	
-	//displayMessage = "";
-	//for (int i = 0; i < displayMessage.size(); i++){
-	//		displayMessage += message[i];
-	//	}
 	
 }	
 
 //--------------------------------------------------------------
 void answeringScene::draw(){
+	glEnable(GL_TEXTURE_2D);
 	ofPushStyle();	
 	
-	//bool bGrid = showGrid.getState();
+	glPushMatrix();
+
+	glTranslatef(ofGetWidth()/2, ofGetHeight()/2, 0);
 	
-	for(int i = 0; i < letterButtons.size(); i++){
-		letterButtons[i].draw();
+	glRotatef(60, 1, 0, 0);
+	
+	static float rot = 0;
+	glRotatef(rot, 0, 0, 1);
+	rot += 0.1;
+	
+	glTranslatef(0, 32, 0);
+	
+	glPushMatrix();
+	glTranslatef(0, 0, 0);
+	glScalef(32, -32, 1);
+	glcRenderString("あのイーハトーヴォのすきとおった風、");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0, 50, 0);
+	glScalef(32, -32, 1);
+	glcRenderString("夏でも底に冷たさをもつ青いそら、");
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0, 100, 0);
+	glScalef(32, -32, 1);
+	glcRenderString("うつくしい森で飾られたモリーオ市、");
+	glPopMatrix();	
+	
+	glPushMatrix();
+	glTranslatef(0, 150, 0);
+	glScalef(32, -32, 1);
+	glcRenderString("郊外のぎらぎらひかる草の波。");
+	glPopMatrix();	
+
+	glPopMatrix();
+
+	
+//	ofRectangle rect = jaFont.getStringBoundingBox("牛desu", 0, 0);
+//	ofSetColor(0, 0, 0);
+//	jaFont.drawString("牛desu", ofGetWidth()/2-rect.width/2, ofGetHeight()/2+rect.height/2);
+//	ofSetColor(255, 255, 255);
+	
+	vector<buttonTransformable>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		it->draw();
+		++it;
 	}
-	for(int i = 0; i < actionButtons.size(); i++){
-		actionButtons[i].draw();
-	}
-	
-	//float textWidth = 8.0f * displayMessage.length();
-	//float remainX = (width - textWidth)/2;
-	
-	//float textHeight = 14.0f;
-	//float remainY = (height - textHeight)/2.0f + (textHeight/2.0f);
-	ofFill();
-	ofSetColor(0,0,0);
-	ofRect(0,0,ofGetWidth(), 200);
-	
-	
-	ofSetColor(255,255,255);
-	//ofDrawBitmapString(displayMessage, 200, 600);
-	
-	
-	string layedoutmessage = "";
-	
-	if (displayMessage.size() > 0){
-		int count = 0;
-		for (int i = 0; i < displayMessage.size(); i++){
-			layedoutmessage.push_back(displayMessage[i]);
-			count++;
-			if (count >  58){
-				layedoutmessage += "-\n";
-				count = 0;
-			}
-		}
-	}
-	
-	franklinBook.drawString(layedoutmessage, 30, 50);
-	
-	
-	vector <string> strings = ofSplitString(layedoutmessage, "\n");
-	string subMessage = layedoutmessage;
-	if(strings.size() > 1){
-		subMessage = strings[strings.size()-1];
-	}
-	float xx = franklinBook.getStringBoundingBox(subMessage + ".", 30, 50).x + franklinBook.getStringBoundingBox(subMessage+ ".", 30, 50).width;
-	float yy = franklinBook.getStringBoundingBox(layedoutmessage + ".", 30, 50).y + franklinBook.getStringBoundingBox(layedoutmessage+ ".", 30, 50).height;
-	
-	ofSetColor(127, 127, 127);
-	ofRect(xx, yy, 10,3);
 	
 	ofPopStyle();
-	
-	//drawCursor();
 }
 
 void answeringScene::mousePressed(int x, int y, int button) {
-	vector<buttonTransformable>::iterator it = letterButtons.begin();
-	while (it != letterButtons.end()) {
-		if(it->x <= x && x <= it->x + it->width &&
-		   it->y <= y && y <= it->y + it->height) {
+	vector<buttonTransformable>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		if (it->inRect(x, y)) {
 			it->mousePressed(x, y, button);
 		}
 		++it;
@@ -425,8 +137,8 @@ void answeringScene::mousePressed(int x, int y, int button) {
 }
 
 void answeringScene::mouseDragged(int x, int y, int button) {
-	vector<buttonTransformable>::iterator it = letterButtons.begin();
-	while (it != letterButtons.end()) {
+	vector<buttonTransformable>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
 		if(it->pressing) {
 			it->mouseDragged(x, y, button);
 		}
@@ -435,10 +147,9 @@ void answeringScene::mouseDragged(int x, int y, int button) {
 }
 
 void answeringScene::mouseReleased(int x, int y, int button) {
-	vector<buttonTransformable>::iterator it = letterButtons.begin();
-	while (it != letterButtons.end()) {
-		if(it->x <= x && x <= it->x + it->width &&
-		   it->y <= y && y <= it->y + it->height) {
+	vector<buttonTransformable>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		if (it->inRect(x, y)) {
 			it->mouseReleased(x, y, button);
 		}
 		++it;
