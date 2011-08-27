@@ -25,10 +25,12 @@ public:
 		dragging = false;
 		pressing = false;
 		scaling = false;
+		editing = false;
 	}
 
 	void mousePressed(int xIn, int yIn, int button) {
 		pressing = true;
+		editing = false;
 		dragOrigin.x = xIn;
 		dragOrigin.y = yIn;
 		if (x + width - SCALING_EDGE < xIn &&
@@ -50,9 +52,12 @@ public:
 		dragOrigin.y = yIn;
 	}
 	
-	void mouseReleased(int x, int y, int button) {
+	virtual void mouseReleased(int x, int y, int button) {
 		if (!dragging && !scaling && pressing) {
 			// start changing text
+			editing = true;
+		}else {
+			editing = false;
 		}
 		pressing = false;
 		scaling = false;
@@ -63,6 +68,7 @@ public:
 	bool dragging;
 	bool pressing;
 	bool scaling;
+	bool editing;
 };
 
 #endif

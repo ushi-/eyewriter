@@ -29,7 +29,8 @@ public:
 			glcGetStringMetric(GLC_BOUNDS, stringMetric);
 		}
 		textWidth = stringMetric[4] - stringMetric[6];
-		textHeight = stringMetric[7] - stringMetric[1];
+//		textHeight = stringMetric[7] - stringMetric[1];
+		textHeight = 1;
 	}
 	
 	virtual void setup( string onName, float xIn, float yIn, float w, float h ){
@@ -49,7 +50,7 @@ public:
 		float pctActive = ofMap(pct, 0.0, maxCount, 0.0, 110.0, true);		
 		
 		//pctActive = ofClamp(pctActive, 0, 110.0);	
-		if( bFlash){
+		if( bFlash || editing){
 			ofSetColor(0, 100, 240, opacity);
 		}else{
 			ofSetColor(120 - pctActive, 120+pctActive*2, 120 - pctActive, opacity);
@@ -93,6 +94,19 @@ public:
 //		}
 		
 		//ofDrawBitmapString("pctActive is" +ofToString(pct), 200, y);
+	}
+	
+	void mouseReleased(int x, int y, int button) {
+		if (!dragging && !scaling && pressing) {
+			// start changing text
+			setDisplayText("");
+			editing = true;
+		}else {
+			editing = false;
+		}
+		pressing = false;
+		scaling = false;
+		dragging = false;
 	}
 	
 	float textWidth;

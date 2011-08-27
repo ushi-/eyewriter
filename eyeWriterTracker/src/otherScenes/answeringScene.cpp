@@ -58,6 +58,7 @@ void answeringScene::setup(){
 	
 	mx = 0.0;
 	my = 0.0; 
+	editingText = false;
 }
 //--------------------------------------------------------------
 void answeringScene::update(float mouseX, float mouseY){
@@ -102,13 +103,21 @@ void answeringScene::mousePressed(int x, int y, int button) {
 		buttons.push_back(newButton);
 	}
 	
-	vector<buttonTriggerTransformableQuesoglc>::reverse_iterator it = buttons.rbegin();
-	while (it != buttons.rend()) {
-		if (it->inRect(x, y)) {
-			it->mousePressed(x, y, button);
+	editingText = false;
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		it->editing = false;
+		++it;
+	}
+	editingText = false;
+	
+	vector<buttonTriggerTransformableQuesoglc>::reverse_iterator rit = buttons.rbegin();
+	while (rit != buttons.rend()) {
+		if (rit->inRect(x, y)) {
+			rit->mousePressed(x, y, button);
 			break;
 		}
-		++it;
+		++rit;
 	}
 }
 
@@ -131,8 +140,47 @@ void answeringScene::mouseReleased(int x, int y, int button) {
 				break;
 			}
 			it->mouseReleased(x, y, button);
+			if (it->editing) {
+				editingText = true;
+			}
 		}
 		++it;
 	}
 
+}
+
+void answeringScene::keyPressed(int key) {
+	if (key == OF_KEY_RETURN) {
+		vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
+		while (it != buttons.end()) {
+			it->editing = false;
+			++it;
+		}
+		editingText = false;
+		return;
+	}
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		if (it->editing) {
+			if (key == OF_KEY_DEL) {
+				it->setDisplayText((it->displayText).substr(0, (it->displayText).size()-1));
+			}else {
+				it->setDisplayText((it->displayText)+(char)key);
+			}
+		}
+		++it;
+	}
+}
+
+void answeringScene::sdlTextChanged(char *text) {
+	if ((string)text == "") {
+		return;
+	}
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		if (it->editing) {
+			it->setDisplayText(text);
+		}
+		++it;
+	}
 }

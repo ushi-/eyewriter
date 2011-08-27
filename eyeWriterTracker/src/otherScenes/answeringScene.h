@@ -39,11 +39,16 @@ public:
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
 	void printMessageHistory();
+	void keyPressed  (int key);
+	void sdlTextChanged(char* text);
 	
 	
 	vector <buttonTriggerTransformableQuesoglc> buttons;
 	buttonQuesoglc addButton;
 	buttonQuesoglc removeButotn;
+	buttonTriggerTransformableQuesoglc currentButton;
 	
 	ofTrueTypeFont  helvetica;	
+	
+	bool editingText;
 };

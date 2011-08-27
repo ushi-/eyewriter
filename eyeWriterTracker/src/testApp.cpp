@@ -166,6 +166,10 @@ void testApp::draw(){
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 	
+	if (mode == MODE_ANSWER && answerScene.editingText) {
+		answerScene.keyPressed(key);
+		return;
+	}
 	
 	switch (key){
 			
@@ -229,7 +233,6 @@ void testApp::mouseDragged(int x, int y, int button){
 	if (mode == MODE_TRACKING)			TM.mouseDragged(x, y, button);
 	if (mode == MODE_CALIBRATING)		CM.mouseDragged(x, y, button);
 	if (mode == MODE_ANSWER)			answerScene.mouseDragged(x, y, button);
-
 }
 
 //--------------------------------------------------------------
@@ -253,5 +256,5 @@ void testApp::resized(int w, int h){
 }
 
 void testApp::sdlTextChanged(char* text){
-	cout << "testApp::sdlTextChanged(char* text)" << text << endl;
+	if (mode == MODE_ANSWER) answerScene.sdlTextChanged(text);
 }
