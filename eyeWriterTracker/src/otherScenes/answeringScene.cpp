@@ -41,14 +41,20 @@ void answeringScene::setup(){
 	//buttonCount=390;
 	ofBackground(255, 255, 255);
 
-	addButton.setup("クリックしてボタンを追加", 400, 10, 360, 100);
-	removeButotn.setup("削除したいボタンをドロップ", 800, 10, 360, 100);
+	addButton.setup("クリックしてボタンを追加", ofGetWidth() - 370, 10, 360, 100);
+	removeButotn.setup("削除したいボタンをドロップ", ofGetWidth() - 370, ofGetHeight() - 110, 360, 100);
 	
 	buttonTriggerTransformableQuesoglc yesButton;
-	yesButton.setup("イートハーヴォ", 100, 100, 300, 200);
+	yesButton.setup("はい", ofGetWidth()/2.0 - 310 - 150, ofGetHeight()/2.0 - 100, 300, 200);
 	yesButton.setMaxCounter(buttonCount);
 	yesButton.setRetrigger(false);
 	buttons.push_back(yesButton);
+	
+	buttonTriggerTransformableQuesoglc noButton;
+	noButton.setup("いいえ", ofGetWidth()/2.0 + 310 - 150, ofGetHeight()/2.0 - 100, 300, 200);
+	noButton.setMaxCounter(buttonCount);
+	noButton.setRetrigger(false);
+	buttons.push_back(noButton);
 	
 	mx = 0.0;
 	my = 0.0; 
@@ -90,7 +96,7 @@ void answeringScene::draw(){
 void answeringScene::mousePressed(int x, int y, int button) {
 	if (addButton.inRect(x, y)) {
 		buttonTriggerTransformableQuesoglc newButton;
-		newButton.setup("新しいボタン", 100, 100, 300, 200);
+		newButton.setup("新しいボタン", ofGetWidth()/2.0 - 150, ofGetHeight()/2.0 - 100, 300, 200);
 		newButton.setMaxCounter(buttonCount);
 		newButton.setRetrigger(false);
 		buttons.push_back(newButton);
