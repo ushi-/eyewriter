@@ -51,4 +51,5 @@ public:
 	ofTrueTypeFont  helvetica;	
 	
 	bool editingText;
+	ofSoundPlayer answer;
 };

@@ -61,6 +61,9 @@ public:
 		ofNoFill();
 		ofSetColor(30, 30, 30, opacity);
 		ofRect(x, y, width, height); 
+		ofLine(x+width-SCALING_EDGE, y+height-4, x+width - 4, y+height-SCALING_EDGE);
+		ofLine(x+width-SCALING_EDGE+8, y+height-4, x+width - 4, y+height-SCALING_EDGE+8);
+		ofLine(x+width-SCALING_EDGE+16, y+height-4, x+width - 4, y+height-SCALING_EDGE+16);
 		
 		
 		glEnable(GL_TEXTURE_2D);
@@ -72,28 +75,6 @@ public:
 		glPopMatrix();
 		glDisable(GL_TEXTURE_2D);
 
-//		if (!bHasFont){
-//			float textWidth = 8.0f * displayText.length();
-//			float remainX = (width - textWidth)/2;
-//			
-//			float textHeight = 14.0f;
-//			float remainY = (height - textHeight)/2.0f + (textHeight/2.0f);
-//			
-//			ofSetColor(100, 100, 160);
-//			ofDrawBitmapString(displayText, x + remainX, y + remainY);
-//		} else {
-//			ofRectangle bounds = font->getStringBoundingBox(displayText, 0,0);
-//			
-//			float textWidth = bounds.width;
-//			float remainX = (width - textWidth)/2;
-//			
-//			float textHeight = bounds.height;
-//			float remainY = (height - textHeight)/2.0f + (textHeight/2.0f);
-//			ofSetColor(60, 60, 60);
-//			font->drawString(displayText, x + remainX, y + remainY);
-//		}
-		
-		//ofDrawBitmapString("pctActive is" +ofToString(pct), 200, y);
 	}
 	
 	void mouseReleased(int x, int y, int button) {

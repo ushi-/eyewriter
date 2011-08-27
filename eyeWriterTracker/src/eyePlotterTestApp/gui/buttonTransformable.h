@@ -14,7 +14,7 @@
 #include "ofMain.h"
 #include "buttonTrigger.h"
 
-static const int SCALING_EDGE = 30;
+static const int SCALING_EDGE = 24;
 
 class buttonTransformable : public buttonTrigger {
 	

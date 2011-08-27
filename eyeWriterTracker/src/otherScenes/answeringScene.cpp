@@ -68,7 +68,11 @@ void answeringScene::update(float mouseX, float mouseY){
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if (it->update(mx, my)) {
-			
+			answer.loadSound("sounds/"+ it->displayText + ".wav");
+			if (!answer.bLoadedOk) {
+				answer.loadSound("sounds/Ping.wav");
+			}
+			answer.play();
 		}
 		++it;
 	}
