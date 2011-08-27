@@ -6,8 +6,8 @@ void calibrationManager::setup(){
 	calibrationInfo.loadImage("images/calibrationInfo.png");
 	font.loadFont("fonts/HelveticaNeueMed.ttf", 32);
 
-	nDivisionsWidth = 3;
-	nDivisionsHeight = 3;
+	nDivisionsWidth = 5;
+	nDivisionsHeight = 5;
 
 	nPosition = 0;
 	pos  = 0;
@@ -154,16 +154,16 @@ void calibrationManager::draw(){
 	ofSetColor(30, 30, 30, (int) (255 - 255 *  menuEnergy));
 	ofRect(0,0,ofGetWidth(), ofGetHeight());
 
-//	ofSetColor(255, 255, 255, 40);
-//	for (int i = 0; i < nDivisionsWidth; i++){
-//		float xLine = calibrationRectangle.x + ((float)calibrationRectangle.width / (float)(nDivisionsWidth-1)) * i;
-//		ofLine(xLine, calibrationRectangle.y,xLine, calibrationRectangle.y + calibrationRectangle.height);
-//	}
-//
-//	for (int i = 0; i < nDivisionsHeight; i++){
-//		float yLine = calibrationRectangle.y + calibrationRectangle.height - ((float)calibrationRectangle.height / (float)(nDivisionsHeight-1)) * i;
-//		ofLine(calibrationRectangle.x,yLine, calibrationRectangle.x + calibrationRectangle.width,yLine);
-//	}
+	ofSetColor(255, 255, 255, 40);
+	for (int i = 0; i < nDivisionsWidth; i++){
+		float xLine = calibrationRectangle.x + ((float)calibrationRectangle.width / (float)(nDivisionsWidth-1)) * i;
+		ofLine(xLine, calibrationRectangle.y,xLine, calibrationRectangle.y + calibrationRectangle.height);
+	}
+
+	for (int i = 0; i < nDivisionsHeight; i++){
+		float yLine = calibrationRectangle.y + calibrationRectangle.height - ((float)calibrationRectangle.height / (float)(nDivisionsHeight-1)) * i;
+		ofLine(calibrationRectangle.x,yLine, calibrationRectangle.x + calibrationRectangle.width,yLine);
+	}
 
 	//-----------------------------------------------------------------------
 	//-----------------------------------------------------------------------
