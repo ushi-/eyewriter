@@ -14,6 +14,9 @@
 		4E50182C14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E50182B14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp */; };
 		4E50182F1405691500E92C7D /* buttonQuesoglc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E50182E1405691500E92C7D /* buttonQuesoglc.cpp */; };
 		4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */; };
+		4EEDFD4D14088BF000776EEB /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEDFD3C14088BF000776EEB /* SDL.framework */; };
+		4EEDFD4E14088BF000776EEB /* ofxSDLAppWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDFD4114088BF000776EEB /* ofxSDLAppWindow.cpp */; };
+		4EEDFD4F14088BF000776EEB /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDFD4514088BF000776EEB /* SDLMain.m */; };
 		CF1B1B051228715100AAEF89 /* pongScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1B1B031228715100AAEF89 /* pongScene.cpp */; };
 		CF5E82AE12283C29004404A1 /* speak.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AB12283C29004404A1 /* speak.m */; };
 		CF5E82AF12283C29004404A1 /* typingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E82AC12283C29004404A1 /* typingScene.cpp */; };
@@ -190,6 +193,15 @@
 		4E5018301405692300E92C7D /* buttonQuesoglc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonQuesoglc.h; sourceTree = "<group>"; };
 		4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = answeringScene.cpp; sourceTree = "<group>"; };
 		4EA72F0E1404F2A900B4AF68 /* answeringScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answeringScene.h; sourceTree = "<group>"; };
+		4EEDFD3A14088BF000776EEB /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
+		4EEDFD3C14088BF000776EEB /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
+		4EEDFD3F14088BF000776EEB /* ofxSDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSDL.h; sourceTree = "<group>"; };
+		4EEDFD4014088BF000776EEB /* ofxSDLApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSDLApp.h; sourceTree = "<group>"; };
+		4EEDFD4114088BF000776EEB /* ofxSDLAppWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSDLAppWindow.cpp; sourceTree = "<group>"; };
+		4EEDFD4214088BF000776EEB /* ofxSDLAppWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSDLAppWindow.h; sourceTree = "<group>"; };
+		4EEDFD4314088BF000776EEB /* ofxSDLEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSDLEvents.h; sourceTree = "<group>"; };
+		4EEDFD4414088BF000776EEB /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		4EEDFD4514088BF000776EEB /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		CF1B1B031228715100AAEF89 /* pongScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pongScene.cpp; sourceTree = "<group>"; };
 		CF1B1B041228715100AAEF89 /* pongScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pongScene.h; sourceTree = "<group>"; };
 		CF5E82AA12283C29004404A1 /* speak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speak.h; sourceTree = "<group>"; };
@@ -512,6 +524,7 @@
 				4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */,
 				4E5018291405493100E92C7D /* libGLC.a in Frameworks */,
 				4E50182A1405493100E92C7D /* libiconv.a in Frameworks */,
+				4EEDFD4D14088BF000776EEB /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +558,39 @@
 			path = GL;
 			sourceTree = "<group>";
 		};
+		4EEDFD2F14088BF000776EEB /* ofxSDL */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDFD3A14088BF000776EEB /* install.xml */,
+				4EEDFD3B14088BF000776EEB /* libs */,
+				4EEDFD3E14088BF000776EEB /* src */,
+			);
+			name = ofxSDL;
+			path = ../../../addons/ofxSDL;
+			sourceTree = "<group>";
+		};
+		4EEDFD3B14088BF000776EEB /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDFD3C14088BF000776EEB /* SDL.framework */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		4EEDFD3E14088BF000776EEB /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4EEDFD3F14088BF000776EEB /* ofxSDL.h */,
+				4EEDFD4014088BF000776EEB /* ofxSDLApp.h */,
+				4EEDFD4114088BF000776EEB /* ofxSDLAppWindow.cpp */,
+				4EEDFD4214088BF000776EEB /* ofxSDLAppWindow.h */,
+				4EEDFD4314088BF000776EEB /* ofxSDLEvents.h */,
+				4EEDFD4414088BF000776EEB /* SDLMain.h */,
+				4EEDFD4514088BF000776EEB /* SDLMain.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		CF5E82A912283C29004404A1 /* otherScenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +609,7 @@
 		CFD61CE1122729D20026C82D /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
+				4EEDFD2F14088BF000776EEB /* ofxSDL */,
 				4E5018211405493000E92C7D /* quesoglc */,
 				CFD8346F122828A800694F62 /* ofxFileHelper */,
 				CFD61DEF12272ABA0026C82D /* ofxLibdc */,
@@ -1668,6 +1715,8 @@
 				4E5016661405049C00E92C7D /* buttonTransformable.cpp in Sources */,
 				4E50182C14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp in Sources */,
 				4E50182F1405691500E92C7D /* buttonQuesoglc.cpp in Sources */,
+				4EEDFD4E14088BF000776EEB /* ofxSDLAppWindow.cpp in Sources */,
+				4EEDFD4F14088BF000776EEB /* SDLMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1730,8 +1779,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxSDL/libs\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G4;
@@ -1865,8 +1916,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxSDL/libs\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -1928,8 +1981,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../addons/ofxSDL/libs\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G4;
