@@ -10,6 +10,7 @@
 #include "typingScene.h"
 #include "pongScene.h"
 #include "answeringScene.h"
+#include "ofxSDL.h"
 
 enum{
 	
@@ -19,7 +20,7 @@ enum{
 
 #include "eyePlotterTestApp.h"
 
-class testApp : public ofBaseApp {
+class testApp : public ofxSDLApp {
 
 	public:
 
@@ -35,6 +36,7 @@ class testApp : public ofBaseApp {
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
 		void resized(int w, int h);
+	void sdlTextChanged(char* text);
 
 		//----- scenes
 
@@ -64,7 +66,6 @@ class testApp : public ofBaseApp {
 	
 		static const float rotSmooth = .9;
 
-	
 };
 
 #endif

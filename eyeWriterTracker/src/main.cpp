@@ -1,12 +1,13 @@
 #include "ofMain.h"
 #include "testApp.h"
 #include "ofAppGlutWindow.h"
+#include "ofxSDL.h"
 
 //========================================================================
 int main( ){
 
-    ofAppGlutWindow window;
-	ofSetupOpenGL(&window, 1680,1050, OF_FULLSCREEN);			// <-------- setup the GL context
+    ofxSDLAppWindow window;
+	ofSetupOpenGL(&window, 1368,860, OF_WINDOW);			// <-------- setup the GL context
 
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN

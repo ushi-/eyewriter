@@ -251,3 +251,7 @@ void testApp::mouseReleased(int x, int y, int button){
 void testApp::resized(int w, int h){
 
 }
+
+void testApp::sdlTextChanged(char* text){
+	cout << "testApp::sdlTextChanged(char* text)" << text << endl;
+}
