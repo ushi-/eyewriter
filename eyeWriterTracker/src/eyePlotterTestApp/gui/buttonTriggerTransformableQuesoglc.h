@@ -9,14 +9,29 @@
 #ifndef RemoteEyeTracker_buttonTriggerTransformableQuesoglc_h
 #define RemoteEyeTracker_buttonTriggerTransformableQuesoglc_h
 
-#include "buttonTransformable.h"
+#include "buttonTrigger.h"
 #include "glc.h"
 
-class buttonTriggerTransformableQuesoglc : public buttonTransformable {
+static const int SCALING_EDGE = 24;
+
+enum {
+	buttonStateNone = 0,
+	buttonStateOnMouse,
+	buttonStateDragging,
+	buttonStateScaling,
+	buttonStateEditing,
+	buttonStateRemoving,
+	buttonStateRecording
+};
+
+
+class buttonTriggerTransformableQuesoglc : public buttonTrigger {
 	
 public:
 	
-	buttonTriggerTransformableQuesoglc() : buttonTransformable() {
+	buttonTriggerTransformableQuesoglc() : buttonTrigger() {
+		dragOrigin = ofPoint(0, 0);
+		state = buttonStateNone;
 		textWidth = 0;
 		textHeight = 0;
 	}
@@ -29,7 +44,6 @@ public:
 			glcGetStringMetric(GLC_BOUNDS, stringMetric);
 		}
 		textWidth = stringMetric[4] - stringMetric[6];
-//		textHeight = stringMetric[7] - stringMetric[1];
 		textHeight = 1;
 	}
 	
@@ -42,6 +56,7 @@ public:
 		height	= h;
 		numTriggers = 0;
 		flashLength = 0.2;
+		imgRemove.loadImage("data/images/remove.png");
 	}
 	
 	void draw(float opacity = 255){
@@ -50,7 +65,7 @@ public:
 		float pctActive = ofMap(pct, 0.0, maxCount, 0.0, 110.0, true);		
 		
 		//pctActive = ofClamp(pctActive, 0, 110.0);	
-		if( bFlash || editing){
+		if( bFlash || state == buttonStateEditing){
 			ofSetColor(0, 100, 240, opacity);
 		}else{
 			ofSetColor(120 - pctActive, 120+pctActive*2, 120 - pctActive, opacity);
@@ -77,22 +92,52 @@ public:
 
 	}
 	
-	void mouseReleased(int x, int y, int button) {
-		if (!dragging && !scaling && pressing) {
-			// start changing text
-			setDisplayText("");
-			editing = true;
+	void mousePressed(int xIn, int yIn, int button) {
+		if (inRect(xIn, yIn)) {
+			state = buttonStateOnMouse;
+			dragOrigin.x = xIn;
+			dragOrigin.y = yIn;
+			if (x + width - SCALING_EDGE < xIn &&
+				y + height - SCALING_EDGE < yIn) {
+				state = buttonStateScaling;
+			}
 		}else {
-			editing = false;
+			state = buttonStateNone;
 		}
-		pressing = false;
-		scaling = false;
-		dragging = false;
 	}
 	
+	void mouseDragged(int xIn, int yIn, int button) {
+		if (state == buttonStateScaling) {
+			width += (xIn - dragOrigin.x);
+			height += (yIn - dragOrigin.y);
+			dragOrigin.x = xIn;
+			dragOrigin.y = yIn;
+		}else if (state == buttonStateOnMouse || state == buttonStateDragging) {
+			state = buttonStateDragging;
+			x += (xIn - dragOrigin.x);
+			y += (yIn - dragOrigin.y);
+			dragOrigin.x = xIn;
+			dragOrigin.y = yIn;
+		}
+	}
+	
+	void mouseReleased(int x, int y, int button) {
+		switch(state) {
+			case buttonStateDragging:
+			case buttonStateScaling:
+				state = buttonStateNone;
+				break;
+			case buttonStateOnMouse:
+				state = buttonStateEditing;
+				break;
+		}
+	}
+	
+	ofPoint dragOrigin;
+	int state;
 	float textWidth;
 	float textHeight;
-	
+	ofImage imgRemove;
 };
 
 

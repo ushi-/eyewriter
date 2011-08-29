@@ -108,19 +108,9 @@ void answeringScene::mousePressed(int x, int y, int button) {
 	}
 	
 	editingText = false;
-	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
-	while (it != buttons.end()) {
-		it->editing = false;
-		++it;
-	}
-	editingText = false;
-	
 	vector<buttonTriggerTransformableQuesoglc>::reverse_iterator rit = buttons.rbegin();
 	while (rit != buttons.rend()) {
-		if (rit->inRect(x, y)) {
-			rit->mousePressed(x, y, button);
-			break;
-		}
+		rit->mousePressed(x, y, button);
 		++rit;
 	}
 }
@@ -128,9 +118,7 @@ void answeringScene::mousePressed(int x, int y, int button) {
 void answeringScene::mouseDragged(int x, int y, int button) {
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
-		if(it->pressing) {
-			it->mouseDragged(x, y, button);
-		}
+		it->mouseDragged(x, y, button);
 		++it;
 	}
 }
@@ -139,12 +127,9 @@ void answeringScene::mouseReleased(int x, int y, int button) {
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
 		if (it->inRect(x, y)) {
-			if (it->dragging && removeButotn.inRect(x, y)){
-				it = buttons.erase(it);
-				break;
-			}
 			it->mouseReleased(x, y, button);
-			if (it->editing) {
+			if (it->state == buttonStateEditing) {
+				it->setDisplayText("");
 				editingText = true;
 			}
 		}
@@ -157,7 +142,7 @@ void answeringScene::keyPressed(int key) {
 	if (key == OF_KEY_RETURN) {
 		vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 		while (it != buttons.end()) {
-			it->editing = false;
+			it->state = buttonStateNone;
 			++it;
 		}
 		editingText = false;
@@ -165,7 +150,7 @@ void answeringScene::keyPressed(int key) {
 	}
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
-		if (it->editing) {
+		if (it->state == buttonStateEditing) {
 			if (key == OF_KEY_DEL) {
 				it->setDisplayText((it->displayText).substr(0, (it->displayText).size()-1));
 			}else {
@@ -182,7 +167,7 @@ void answeringScene::sdlTextChanged(char *text) {
 	}
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
-		if (it->editing) {
+		if (it->state == buttonStateEditing) {
 			it->setDisplayText(text);
 		}
 		++it;
