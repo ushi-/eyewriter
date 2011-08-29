@@ -41,7 +41,6 @@ void answeringScene::setup(){
 	//buttonCount=390;
 	ofBackground(255, 255, 255);
 
-//	addButton.setup("クリックしてボタンを追加", ofGetWidth() - 370, 10, 360, 100);
 	addButton.setup("images/add.png", ofGetWidth() - 110, 10, 100, 100);
 	
 	buttonTriggerTransformableQuesoglc yesButton;
@@ -76,7 +75,6 @@ void answeringScene::update(float mouseX, float mouseY){
 		}
 		++it;
 	}
-
 	
 	//ofSetFrameRate(100);
 	
@@ -110,6 +108,10 @@ void answeringScene::mousePressed(int x, int y, int button) {
 	vector<buttonTriggerTransformableQuesoglc>::reverse_iterator rit = buttons.rbegin();
 	while (rit != buttons.rend()) {
 		rit->mousePressed(x, y, button);
+		if (rit->state == buttonStateRecordStopped) {
+			// save wav
+			rit->state = buttonStateNone;
+		}
 		++rit;
 	}
 }
@@ -134,6 +136,13 @@ void answeringScene::mouseReleased(int x, int y, int button) {
 			if (it->state == buttonStateEditing) {
 				it->setDisplayText("");
 				editingText = true;
+			}
+			if (it->state == buttonStateRecordStarted) {
+				// start recording!!!
+			}
+			if (it->state == buttonStateRecordStopped) {
+				// save wav
+				it->state = buttonStateNone;
 			}
 		}
 		++it;

@@ -21,7 +21,8 @@ enum {
 	buttonStateScaling,
 	buttonStateEditing,
 	buttonStateRemoving,
-	buttonStateRecording
+	buttonStateRecordStarted,
+	buttonStateRecordStopped
 };
 
 
@@ -44,7 +45,7 @@ public:
 			glcGetStringMetric(GLC_BOUNDS, stringMetric);
 		}
 		textWidth = stringMetric[4] - stringMetric[6];
-		textHeight = 1;
+		textHeight = -0.8;
 	}
 	
 	virtual void setup( string onName, float xIn, float yIn, float w, float h ){
@@ -57,6 +58,8 @@ public:
 		numTriggers = 0;
 		flashLength = 0.2;
 		imgRemove.loadImage("images/remove.png");
+		imgRecord.loadImage("images/record.png");
+		imgRecordStop.loadImage("images/recordStop.png");
 	}
 	
 	void draw(float opacity = 255){
@@ -93,11 +96,19 @@ public:
 
 		ofEnableAlphaBlending();
 		imgRemove.draw(x, y);
+		if (state == buttonStateRecordStarted) {
+			imgRecordStop.draw(x+width/2.0-imgRecordStop.getWidth()/2.0, y+height/2.0+8);
+		}else {
+			imgRecord.draw(x+width/2.0-imgRecord.getWidth()/2.0, y+height/2.0+8);
+		}
 		ofDisableAlphaBlending();
 	}
 	
 	void mousePressed(int xIn, int yIn, int button) {
 		if (inRect(xIn, yIn)) {
+			if (state == buttonStateRecordStarted) {
+				return;
+			}
 			state = buttonStateOnMouse;
 			dragOrigin.x = xIn;
 			dragOrigin.y = yIn;
@@ -106,7 +117,11 @@ public:
 				state = buttonStateScaling;
 			}
 		}else {
-			state = buttonStateNone;
+			if (state == buttonStateRecordStarted) {
+				state = buttonStateRecordStopped;
+			}else {
+				state = buttonStateNone;
+			}
 		}
 	}
 	
@@ -126,17 +141,30 @@ public:
 	}
 	
 	void mouseReleased(int xIn, int yIn, int button) {
+		float recordOriginX = x+width/2.0-imgRecord.getWidth()/2.0;
+		float recordOriginY = y + height/2.0 + 8;
 		switch(state) {
 			case buttonStateDragging:
 			case buttonStateScaling:
 				state = buttonStateNone;
 				break;
 			case buttonStateOnMouse:
+			{
 				if (x <= xIn && xIn <= x+32 &&
 					y <= yIn && yIn <= y+32){
 					state = buttonStateRemoving;
+				}else if (recordOriginX < xIn && xIn < recordOriginX + imgRecord.getWidth() &&
+						  recordOriginY < yIn && yIn < recordOriginY + imgRecord.getHeight()) {
+					state = buttonStateRecordStarted;
 				}else {
 					state = buttonStateEditing;
+				}
+				break;
+			}
+			case buttonStateRecordStarted:
+				if (recordOriginX < xIn && xIn < recordOriginX + imgRecord.getWidth() &&
+					recordOriginY < yIn && yIn < recordOriginY + imgRecord.getHeight()) {
+					state = buttonStateRecordStopped;
 				}
 				break;
 		}
@@ -147,6 +175,9 @@ public:
 	float textWidth;
 	float textHeight;
 	ofImage imgRemove;
+	ofImage imgRecord;
+	ofImage imgRecordStop;
+	buttonRect rectRecord;
 };
 
 
