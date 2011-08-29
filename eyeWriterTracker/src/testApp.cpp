@@ -175,7 +175,7 @@ void testApp::keyPressed(int key){
 			
 		case	OF_KEY_RETURN:
 			mode ++;
-			mode %= 7; // number of modes;
+			mode %= 4; // number of modes;
 			break;
 			
 		case	'm':

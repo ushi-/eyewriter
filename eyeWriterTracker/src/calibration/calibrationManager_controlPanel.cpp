@@ -48,7 +48,7 @@ void calibrationManager::setupControlPanel(){
 
 	panel.setWhichPanel("smoothing");
 	panel.addSlider("remove outliers", "REMOVE_OUTLIERS", 2, .1, 4, false);
-	panel.addSlider("smoothing amount", "AMOUNT_SMOOTHING", 0.993, 0.8, 1.0f, false);
+	panel.addSlider("smoothing amount", "AMOUNT_SMOOTHING", 0.9, 0.8, 1.0f, false);
 }
 
 //--------------------------------------------------------------
