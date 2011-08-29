@@ -41,8 +41,8 @@ void answeringScene::setup(){
 	//buttonCount=390;
 	ofBackground(255, 255, 255);
 
-	addButton.setup("クリックしてボタンを追加", ofGetWidth() - 370, 10, 360, 100);
-	removeButotn.setup("削除したいボタンをドロップ", ofGetWidth() - 370, ofGetHeight() - 110, 360, 100);
+//	addButton.setup("クリックしてボタンを追加", ofGetWidth() - 370, 10, 360, 100);
+	addButton.setup("images/add.png", ofGetWidth() - 110, 10, 100, 100);
 	
 	buttonTriggerTransformableQuesoglc yesButton;
 	yesButton.setup("はい", ofGetWidth()/2.0 - 310 - 150, ofGetHeight()/2.0 - 100, 300, 200);
@@ -87,7 +87,6 @@ void answeringScene::draw(){
 	ofPushStyle();	
 
 	addButton.draw();
-	removeButotn.draw();
 	
 	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
 	while (it != buttons.end()) {
@@ -128,6 +127,10 @@ void answeringScene::mouseReleased(int x, int y, int button) {
 	while (it != buttons.end()) {
 		if (it->inRect(x, y)) {
 			it->mouseReleased(x, y, button);
+			if (it->state == buttonStateRemoving) {
+				it = buttons.erase(it);
+				continue;
+			}
 			if (it->state == buttonStateEditing) {
 				it->setDisplayText("");
 				editingText = true;

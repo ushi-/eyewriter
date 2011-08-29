@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1C78EC140BBE1600847523 /* buttonImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C78EB140BBE1500847523 /* buttonImage.cpp */; };
 		4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018231405493000E92C7D /* libfontconfig.a */; };
 		4E5018291405493100E92C7D /* libGLC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018241405493000E92C7D /* libGLC.a */; };
 		4E50182A1405493100E92C7D /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018251405493000E92C7D /* libiconv.a */; };
@@ -180,6 +181,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E1C78EB140BBE1500847523 /* buttonImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonImage.cpp; sourceTree = "<group>"; };
+		4E1C78ED140BBE1D00847523 /* buttonImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonImage.h; sourceTree = "<group>"; };
 		4E5018231405493000E92C7D /* libfontconfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfontconfig.a; sourceTree = "<group>"; };
 		4E5018241405493000E92C7D /* libGLC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGLC.a; sourceTree = "<group>"; };
 		4E5018251405493000E92C7D /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiconv.a; sourceTree = "<group>"; };
@@ -1178,6 +1181,8 @@
 			children = (
 				4E50182E1405691500E92C7D /* buttonQuesoglc.cpp */,
 				4E5018301405692300E92C7D /* buttonQuesoglc.h */,
+				4E1C78EB140BBE1500847523 /* buttonImage.cpp */,
+				4E1C78ED140BBE1D00847523 /* buttonImage.h */,
 				4E50182B14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp */,
 				4E50182D14054FC700E92C7D /* buttonTriggerTransformableQuesoglc.h */,
 				CFED18C612283BC000C74D7A /* buttonRect.cpp */,
@@ -1711,6 +1716,7 @@
 				4E50182F1405691500E92C7D /* buttonQuesoglc.cpp in Sources */,
 				4EEDFD4E14088BF000776EEB /* ofxSDLAppWindow.cpp in Sources */,
 				4EEDFD4F14088BF000776EEB /* SDLMain.m in Sources */,
+				4E1C78EC140BBE1600847523 /* buttonImage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

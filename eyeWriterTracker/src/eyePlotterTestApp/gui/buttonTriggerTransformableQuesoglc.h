@@ -56,7 +56,7 @@ public:
 		height	= h;
 		numTriggers = 0;
 		flashLength = 0.2;
-		imgRemove.loadImage("data/images/remove.png");
+		imgRemove.loadImage("images/remove.png");
 	}
 	
 	void draw(float opacity = 255){
@@ -72,15 +72,16 @@ public:
 		}
 		
 		ofRect(x, y, width, height); 
+
 		
 		ofNoFill();
 		ofSetColor(30, 30, 30, opacity);
 		ofRect(x, y, width, height); 
+		ofSetLineWidth(2.0);
 		ofLine(x+width-SCALING_EDGE, y+height-4, x+width - 4, y+height-SCALING_EDGE);
 		ofLine(x+width-SCALING_EDGE+8, y+height-4, x+width - 4, y+height-SCALING_EDGE+8);
 		ofLine(x+width-SCALING_EDGE+16, y+height-4, x+width - 4, y+height-SCALING_EDGE+16);
-		
-		
+
 		glEnable(GL_TEXTURE_2D);
 		glPushMatrix();
 		glTranslatef(x+width/2.0, y+height/2.0, 0);
@@ -90,6 +91,9 @@ public:
 		glPopMatrix();
 		glDisable(GL_TEXTURE_2D);
 
+		ofEnableAlphaBlending();
+		imgRemove.draw(x, y);
+		ofDisableAlphaBlending();
 	}
 	
 	void mousePressed(int xIn, int yIn, int button) {
@@ -121,14 +125,19 @@ public:
 		}
 	}
 	
-	void mouseReleased(int x, int y, int button) {
+	void mouseReleased(int xIn, int yIn, int button) {
 		switch(state) {
 			case buttonStateDragging:
 			case buttonStateScaling:
 				state = buttonStateNone;
 				break;
 			case buttonStateOnMouse:
-				state = buttonStateEditing;
+				if (x <= xIn && xIn <= x+32 &&
+					y <= yIn && yIn <= y+32){
+					state = buttonStateRemoving;
+				}else {
+					state = buttonStateEditing;
+				}
 				break;
 		}
 	}

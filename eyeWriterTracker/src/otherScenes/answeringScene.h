@@ -17,6 +17,7 @@
 #include "buttonTrigger.h"
 #include "buttonTriggerTransformableQuesoglc.h"
 #include "buttonQuesoglc.h"
+#include "buttonImage.h"
 
 #include "ofxXmlSettings.h"
 #include "baseScene.h"
@@ -43,8 +44,7 @@ public:
 	
 	
 	vector <buttonTriggerTransformableQuesoglc> buttons;
-	buttonQuesoglc addButton;
-	buttonQuesoglc removeButotn;
+	buttonImage addButton;
 	buttonTriggerTransformableQuesoglc currentButton;
 	
 	ofTrueTypeFont  helvetica;	
