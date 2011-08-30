@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E1C78EC140BBE1600847523 /* buttonImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C78EB140BBE1500847523 /* buttonImage.cpp */; };
+		4E1C78F2140BF7A600847523 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C78F1140BF7A600847523 /* libsndfile.a */; };
 		4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018231405493000E92C7D /* libfontconfig.a */; };
 		4E5018291405493100E92C7D /* libGLC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018241405493000E92C7D /* libGLC.a */; };
 		4E50182A1405493100E92C7D /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018251405493000E92C7D /* libiconv.a */; };
@@ -183,6 +184,9 @@
 /* Begin PBXFileReference section */
 		4E1C78EB140BBE1500847523 /* buttonImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonImage.cpp; sourceTree = "<group>"; };
 		4E1C78ED140BBE1D00847523 /* buttonImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonImage.h; sourceTree = "<group>"; };
+		4E1C78EF140BF79F00847523 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sndfile.h; path = ../../../../../../../../../usr/local/include/sndfile.h; sourceTree = "<group>"; };
+		4E1C78F0140BF79F00847523 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sndfile.hh; path = ../../../../../../../../../usr/local/include/sndfile.hh; sourceTree = "<group>"; };
+		4E1C78F1140BF7A600847523 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../../../../../usr/local/lib/libsndfile.a; sourceTree = "<group>"; };
 		4E5018231405493000E92C7D /* libfontconfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfontconfig.a; sourceTree = "<group>"; };
 		4E5018241405493000E92C7D /* libGLC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGLC.a; sourceTree = "<group>"; };
 		4E5018251405493000E92C7D /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiconv.a; sourceTree = "<group>"; };
@@ -525,12 +529,23 @@
 				4E5018291405493100E92C7D /* libGLC.a in Frameworks */,
 				4E50182A1405493100E92C7D /* libiconv.a in Frameworks */,
 				4EEDFD4D14088BF000776EEB /* SDL.framework in Frameworks */,
+				4E1C78F2140BF7A600847523 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E1C78EE140BF78200847523 /* libsndfile */ = {
+			isa = PBXGroup;
+			children = (
+				4E1C78EF140BF79F00847523 /* sndfile.h */,
+				4E1C78F0140BF79F00847523 /* sndfile.hh */,
+				4E1C78F1140BF7A600847523 /* libsndfile.a */,
+			);
+			name = libsndfile;
+			sourceTree = "<group>";
+		};
 		4E5018211405493000E92C7D /* quesoglc */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +624,7 @@
 		CFD61CE1122729D20026C82D /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
+				4E1C78EE140BF78200847523 /* libsndfile */,
 				4EEDFD2F14088BF000776EEB /* ofxSDL */,
 				4E5018211405493000E92C7D /* quesoglc */,
 				CFD8346F122828A800694F62 /* ofxFileHelper */,

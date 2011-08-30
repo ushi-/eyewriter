@@ -38,6 +38,7 @@ class testApp : public ofxSDLApp {
 		void mouseReleased(int x, int y, int button);
 		void resized(int w, int h);
 	void sdlTextChanged(char* text);
+	void audioReceived 	(float * input, int bufferSize, int nChannels); 
 
 		//----- scenes
 

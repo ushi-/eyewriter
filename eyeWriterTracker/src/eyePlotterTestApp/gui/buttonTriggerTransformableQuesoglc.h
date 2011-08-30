@@ -68,8 +68,14 @@ public:
 		float pctActive = ofMap(pct, 0.0, maxCount, 0.0, 110.0, true);		
 		
 		//pctActive = ofClamp(pctActive, 0, 110.0);	
-		if( bFlash || state == buttonStateEditing){
+		if( bFlash ){
 			ofSetColor(0, 100, 240, opacity);
+		}else if (state == buttonStateEditing) {
+			ofSetColor(20, 220, 20, opacity);
+		}else if (state == buttonStateRecordStarted) {
+			ofSetColor(20, 220, 20
+					   
+					   );
 		}else{
 			ofSetColor(120 - pctActive, 120+pctActive*2, 120 - pctActive, opacity);
 		}

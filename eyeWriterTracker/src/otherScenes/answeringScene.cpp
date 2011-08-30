@@ -58,6 +58,11 @@ void answeringScene::setup(){
 	mx = 0.0;
 	my = 0.0; 
 	editingText = false;
+	bRecording = false;
+
+	bufferLeft = new float[256];
+	bufferRight = new float[256];
+
 }
 //--------------------------------------------------------------
 void answeringScene::update(float mouseX, float mouseY){
@@ -110,6 +115,7 @@ void answeringScene::mousePressed(int x, int y, int button) {
 		rit->mousePressed(x, y, button);
 		if (rit->state == buttonStateRecordStopped) {
 			// save wav
+			bRecording = false;
 			rit->state = buttonStateNone;
 		}
 		++rit;
@@ -138,10 +144,17 @@ void answeringScene::mouseReleased(int x, int y, int button) {
 				editingText = true;
 			}
 			if (it->state == buttonStateRecordStarted) {
-				// start recording!!!
+				sndfileHandle = SndfileHandle((ofToDataPath("sounds/")+it->displayText+".wav").c_str(), 
+											  SFM_WRITE, 
+											  SF_FORMAT_WAV | SF_FORMAT_PCM_16, 
+											  2, 
+											  44100);
+				bRecording = true;				
 			}
 			if (it->state == buttonStateRecordStopped) {
 				// save wav
+				bRecording = false;
+				sndfileHandle = SndfileHandle();
 				it->state = buttonStateNone;
 			}
 		}

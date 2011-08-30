@@ -21,6 +21,8 @@
 
 #include "ofxXmlSettings.h"
 #include "baseScene.h"
+#include "sndfile.hh"
+#include "stdio.h"
 
 
 extern "C" {
@@ -51,4 +53,9 @@ public:
 	
 	bool editingText;
 	ofSoundPlayer answer;
+	
+	SndfileHandle sndfileHandle;
+	bool bRecording;
+	float *bufferLeft;
+	float *bufferRight;
 };

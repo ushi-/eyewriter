@@ -34,7 +34,8 @@ void testApp::setup(){
 	timeSince = 0;
 	bMouseSimulation = false;
 	bMouseEyeInputSimulation = false;
-	
+
+	ofSoundStreamSetup(0,2,this, 44100, 256, 4);	
 }
 
 
@@ -258,3 +259,31 @@ void testApp::resized(int w, int h){
 void testApp::sdlTextChanged(char* text){
 	if (mode == MODE_ANSWER) answerScene.sdlTextChanged(text);
 }
+
+//--------------------------------------------------------------
+void testApp::audioReceived 	(float * input, int bufferSize, int nChannels){	
+	// samples are "interleaved"
+	if (mode == MODE_ANSWER && answerScene.bRecording){
+		for (int i = 0; i < bufferSize; i++){
+			answerScene.bufferLeft[i] = input[i*2];
+			answerScene.bufferRight[i] = input[i*2+1];
+		}
+		answerScene.sndfileHandle.writef(input, bufferSize);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
