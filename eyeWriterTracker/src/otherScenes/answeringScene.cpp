@@ -8,6 +8,8 @@
 
 #include "answeringScene.h"
 #include "glc.h"
+#include <stdio.h>
+#include <fstream>
 
 //switch to gui
 extern  int buttonCount; 
@@ -43,17 +45,19 @@ void answeringScene::setup(){
 
 	addButton.setup("images/add.png", ofGetWidth() - 110, 10, 100, 100);
 	
-	buttonTriggerTransformableQuesoglc yesButton;
-	yesButton.setup("はい", ofGetWidth()/2.0 - 310 - 150, ofGetHeight()/2.0 - 100, 300, 200);
-	yesButton.setMaxCounter(buttonCount);
-	yesButton.setRetrigger(false);
-	buttons.push_back(yesButton);
-	
-	buttonTriggerTransformableQuesoglc noButton;
-	noButton.setup("いいえ", ofGetWidth()/2.0 + 310 - 150, ofGetHeight()/2.0 - 100, 300, 200);
-	noButton.setMaxCounter(buttonCount);
-	noButton.setRetrigger(false);
-	buttons.push_back(noButton);
+	ifstream ifs(ofToDataPath("buttons.txt").c_str());
+	string buttonsStr;
+	while( !ifs.eof() ){
+		ifs >> buttonsStr;
+		vector<string> subStr = ofSplitString(buttonsStr, ",");
+		if (subStr.size() == 5) {
+			buttonTriggerTransformableQuesoglc button;
+			button.setup(subStr[4], ofToFloat(subStr[0]), ofToFloat(subStr[1]), ofToFloat(subStr[2]), ofToFloat(subStr[3]));
+			button.setMaxCounter(buttonCount);
+			button.setRetrigger(false);
+			buttons.push_back(button);
+		}
+    }
 	
 	mx = 0.0;
 	my = 0.0; 
@@ -197,4 +201,14 @@ void answeringScene::sdlTextChanged(char *text) {
 		}
 		++it;
 	}
+}
+
+void answeringScene::exit() {
+	std::ofstream ofs(ofToDataPath("buttons.txt").c_str());
+	vector<buttonTriggerTransformableQuesoglc>::iterator it = buttons.begin();
+	while (it != buttons.end()) {
+		ofs << it->x << "," << it->y << "," << it->width << "," << it->height << "," << it->displayText << endl;
+		++it;
+	}
+
 }

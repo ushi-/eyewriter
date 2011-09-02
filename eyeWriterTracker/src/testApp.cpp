@@ -273,7 +273,9 @@ void testApp::audioReceived 	(float * input, int bufferSize, int nChannels){
 }
 
 
-
+void testApp::exit(){
+	if (mode == MODE_ANSWER) answerScene.exit();
+}
 
 
 

@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4E1C78EC140BBE1600847523 /* buttonImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C78EB140BBE1500847523 /* buttonImage.cpp */; };
-		4E1C78F2140BF7A600847523 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1C78F1140BF7A600847523 /* libsndfile.a */; };
 		4E5018281405493000E92C7D /* libfontconfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018231405493000E92C7D /* libfontconfig.a */; };
 		4E5018291405493100E92C7D /* libGLC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018241405493000E92C7D /* libGLC.a */; };
 		4E50182A1405493100E92C7D /* libiconv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5018251405493000E92C7D /* libiconv.a */; };
 		4E50182C14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E50182B14054FB600E92C7D /* buttonTriggerTransformableQuesoglc.cpp */; };
 		4E50182F1405691500E92C7D /* buttonQuesoglc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E50182E1405691500E92C7D /* buttonQuesoglc.cpp */; };
+		4E906103140E11A200D6DD1D /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E906100140E11A200D6DD1D /* libsndfile.a */; };
 		4EA72F0D1404F29400B4AF68 /* answeringScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */; };
 		4EEDFD4D14088BF000776EEB /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEDFD3C14088BF000776EEB /* SDL.framework */; };
 		4EEDFD4E14088BF000776EEB /* ofxSDLAppWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDFD4114088BF000776EEB /* ofxSDLAppWindow.cpp */; };
@@ -184,9 +184,6 @@
 /* Begin PBXFileReference section */
 		4E1C78EB140BBE1500847523 /* buttonImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonImage.cpp; sourceTree = "<group>"; };
 		4E1C78ED140BBE1D00847523 /* buttonImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonImage.h; sourceTree = "<group>"; };
-		4E1C78EF140BF79F00847523 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sndfile.h; path = ../../../../../../../../../usr/local/include/sndfile.h; sourceTree = "<group>"; };
-		4E1C78F0140BF79F00847523 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sndfile.hh; path = ../../../../../../../../../usr/local/include/sndfile.hh; sourceTree = "<group>"; };
-		4E1C78F1140BF7A600847523 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../../../../../usr/local/lib/libsndfile.a; sourceTree = "<group>"; };
 		4E5018231405493000E92C7D /* libfontconfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfontconfig.a; sourceTree = "<group>"; };
 		4E5018241405493000E92C7D /* libGLC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGLC.a; sourceTree = "<group>"; };
 		4E5018251405493000E92C7D /* libiconv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiconv.a; sourceTree = "<group>"; };
@@ -195,6 +192,9 @@
 		4E50182D14054FC700E92C7D /* buttonTriggerTransformableQuesoglc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonTriggerTransformableQuesoglc.h; sourceTree = "<group>"; };
 		4E50182E1405691500E92C7D /* buttonQuesoglc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buttonQuesoglc.cpp; sourceTree = "<group>"; };
 		4E5018301405692300E92C7D /* buttonQuesoglc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonQuesoglc.h; sourceTree = "<group>"; };
+		4E906100140E11A200D6DD1D /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
+		4E906101140E11A200D6DD1D /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
+		4E906102140E11A200D6DD1D /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
 		4EA72F0C1404F29400B4AF68 /* answeringScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = answeringScene.cpp; sourceTree = "<group>"; };
 		4EA72F0E1404F2A900B4AF68 /* answeringScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answeringScene.h; sourceTree = "<group>"; };
 		4EEDFD3A14088BF000776EEB /* install.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = install.xml; sourceTree = "<group>"; };
@@ -529,23 +529,13 @@
 				4E5018291405493100E92C7D /* libGLC.a in Frameworks */,
 				4E50182A1405493100E92C7D /* libiconv.a in Frameworks */,
 				4EEDFD4D14088BF000776EEB /* SDL.framework in Frameworks */,
-				4E1C78F2140BF7A600847523 /* libsndfile.a in Frameworks */,
+				4E906103140E11A200D6DD1D /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4E1C78EE140BF78200847523 /* libsndfile */ = {
-			isa = PBXGroup;
-			children = (
-				4E1C78EF140BF79F00847523 /* sndfile.h */,
-				4E1C78F0140BF79F00847523 /* sndfile.hh */,
-				4E1C78F1140BF7A600847523 /* libsndfile.a */,
-			);
-			name = libsndfile;
-			sourceTree = "<group>";
-		};
 		4E5018211405493000E92C7D /* quesoglc */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,6 +561,16 @@
 				4E5018271405493000E92C7D /* glc.h */,
 			);
 			path = GL;
+			sourceTree = "<group>";
+		};
+		4E9060FF140E11A200D6DD1D /* libsndfile */ = {
+			isa = PBXGroup;
+			children = (
+				4E906100140E11A200D6DD1D /* libsndfile.a */,
+				4E906101140E11A200D6DD1D /* sndfile.h */,
+				4E906102140E11A200D6DD1D /* sndfile.hh */,
+			);
+			path = libsndfile;
 			sourceTree = "<group>";
 		};
 		4EEDFD2F14088BF000776EEB /* ofxSDL */ = {
@@ -624,7 +624,7 @@
 		CFD61CE1122729D20026C82D /* AddOns */ = {
 			isa = PBXGroup;
 			children = (
-				4E1C78EE140BF78200847523 /* libsndfile */,
+				4E9060FF140E11A200D6DD1D /* libsndfile */,
 				4EEDFD2F14088BF000776EEB /* ofxSDL */,
 				4E5018211405493000E92C7D /* quesoglc */,
 				CFD8346F122828A800694F62 /* ofxFileHelper */,
@@ -1830,10 +1830,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/quesoglcTest/quesoglc/deps\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/quesoglc/deps\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/libsndfile\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
@@ -1969,10 +1971,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/quesoglcTest/quesoglc/deps\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/quesoglc/deps\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/libsndfile\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
@@ -2032,10 +2036,12 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/freeimage/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/quesoglcTest/quesoglc/deps\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11 = "\"$(SRCROOT)/quesoglc/deps\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12 = "\"$(SRCROOT)/libsndfile\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14 = "\"$(SRCROOT)/../../../libs/fmodex/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15 = "\"$(SRCROOT)/../../../libs/freetype/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../../../libs/FreeImage/lib/osx\"";
